@@ -57,6 +57,21 @@ h3.serif{font-size:clamp(28px,3vw,44px);font-weight:400}
 .sig small{display:block;font-size:.42em;color:var(--gold-dk);line-height:1.1;margin-bottom:.1em}
 .sig-rule{width:min(420px,70%);height:1px;margin:26px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(var(--p))}
 @media (max-width:640px){.sig{white-space:normal}}
+.film{max-width:1100px;margin:clamp(50px,6vw,80px) auto 0;padding:0 max(20px,env(safe-area-inset-left,0px))}
+.film-frame{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#140A0C;box-shadow:0 60px 110px -50px rgba(60,20,20,.7),0 0 0 1px rgba(106,18,34,.18)}
+.film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#140A0C}
+.film-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;border:0;cursor:pointer;color:#F8EFE3;background:radial-gradient(60% 70% at 50% 50%,rgba(20,10,12,.55),rgba(20,10,12,.25));transition:opacity .5s,visibility 0s .5s}
+.film.on .film-play{opacity:0;visibility:hidden;pointer-events:none}
+.fp-ring{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:rgba(106,18,34,.82);box-shadow:inset 0 0 0 1px rgba(255,240,220,.5),0 20px 40px -12px rgba(0,0,0,.6);transition:transform .5s var(--ease),background-color .3s;position:relative}
+.fp-ring::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(255,240,220,.45);animation:pulse 2.4s var(--ease) infinite}
+.fp-ring svg{width:34px;height:34px;margin-left:5px}
+.film-play:hover .fp-ring{transform:scale(1.08);background:var(--lacquer)}
+.fp-txt{display:flex;flex-direction:column;align-items:center;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.fp-txt b{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,40px);line-height:1.1}
+.fp-txt small{font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;opacity:.9;margin-top:6px}
+.film-cap{margin:16px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@keyframes pulse{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+@media (max-width:600px){.film-play{gap:12px;background:rgba(20,10,12,.5)}.fp-ring{width:68px;height:68px}.fp-ring svg{width:24px;height:24px}.fp-txt b{font-size:22px}.fp-txt small{font-size:11.5px}}
 
 /* cursor */
 .cur{position:fixed;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--lacquer);z-index:200;pointer-events:none;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),background-color .35s,box-shadow .35s,opacity .3s;display:grid;place-items:center;opacity:0}
@@ -519,7 +534,7 @@ footer{margin-top:clamp(70px,9vw,120px);font-size:13px;letter-spacing:.08em;colo
   </div>
   <a class="cue" href="#concept"><i></i>Scroll</a>
 </header>
-<section class="sigband"><div class="sigwrite"><p class="sig"><small>Design Concept by</small>Liudmila Mamula</p><div class="sig-rule"></div></div></section>
+<section class="sigband"><div class="sigwrite"><p class="sig"><small>Design Concept by</small>Liudmila Mamula</p><div class="sig-rule"></div></div><div class="film rv" id="film"><div class="film-frame"><video id="filmVid" preload="none" playsinline poster="media/poster.jpg" controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture><source src="media/film.mp4" type="video/mp4"></video><button class="film-play" id="filmPlay" type="button" aria-label="Play the concept film"><span class="fp-ring"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="fp-txt"><b>Watch the film</b><small>Xem phim · 0:30</small></span></button></div><p class="film-cap">Concept film · Vietnam Nish Parfume · with sound</p></div></section>
 <section class="sec concept" id="concept"><div class="wrap">
 <p class="label rv">01 · The concept</p>
 <div class="c-grid"><p class="statement rv">A modern perfume house drawn from <em>Vietnam’s nature</em>, its architecture and its ornament.</p>
@@ -782,6 +797,11 @@ addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key
 let tx=0,ty=0;lbView.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 lbView.addEventListener('touchend',e=>{if(lb.classList.contains('zoom')||e.touches.length)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(ci+(dx<0?1:-1));else if(dy>90&&Math.abs(dy)>Math.abs(dx))close()},{passive:true});
 
+/* concept film: plays only on demand, full controls, no download */
+const film=$('#film'),fv=$('#filmVid'),fp=$('#filmPlay');
+if(fv){fp.onclick=()=>{film.classList.add('on');fv.controls=true;fv.currentTime=0;const p=fv.play();if(p&&p.catch)p.catch(()=>{});};
+  fv.addEventListener('ended',()=>{film.classList.remove('on');fv.controls=false;fv.load()});
+  fv.addEventListener('contextmenu',e=>e.preventDefault());}
 /* images are for viewing only */
 document.addEventListener('contextmenu',e=>{if(e.target.closest('img,.fig,.face,[data-i],.lb'))e.preventDefault()});
 document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
