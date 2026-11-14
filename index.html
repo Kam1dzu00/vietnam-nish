@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F6F0E7">
+<meta property="og:title" content="Vietnam Nish Parfume · Design Concept">
+<meta property="og:description" content="Brand identity exploration: concept, process, pattern library and three colour worlds.">
+<meta property="og:image" content="img/107_hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F0E7'/%3E%3Cg fill='none' stroke='%23A3262F' stroke-width='1.6'%3E%3Cpath d='M16 3 29 16 16 29 3 16Z'/%3E%3Cpath d='M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z'/%3E%3C/g%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}</style>
+<title>Vietnam Nish Parfume</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Brand identity exploration for Vietnam Nish Parfume: concept, process, pattern library and three colour worlds with mock-ups and details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: framed hero (landscape layers + 3D flacon box) → signature → concept → process (pinned horizontal) → pattern library (coverflow rows + big 3D box) → three colour worlds (sub-nav, intro with world box, patterns, stacked mock-ups, details, boards) → close. #concept-patterns is a full-screen view. */
+@property --p{syntax:"<number>";inherits:true;initial-value:1}
+:root{
+  --paper:#F6F0E7; --paper-2:#EFE5D7; --ink:#231815; --muted:#6F625B; --line:rgba(35,24,21,.14);
+  --lacquer:#6A1222; --vermilion:#A3262F; --gold:#B8925A; --gold-dk:#8A6838; --gold-soft:#E0C28C; --cream:#F4EADC; --night:#140A0C;
+  --serif:"Noto Serif Display","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --script:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;
+  --ease:cubic-bezier(.22,.8,.2,1); --ease-io:cubic-bezier(.65,0,.35,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;overflow-x:hidden;font-variant-numeric:lining-nums}
+img{max-width:100%;height:auto;display:block;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+::selection{background:var(--lacquer);color:var(--cream)}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));position:relative;z-index:2}
+.sec{position:relative;padding-block:clamp(96px,12vw,170px)}
+.label{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin:0 0 22px;display:flex;align-items:center;gap:14px;color:var(--gold-dk)}
+.label::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
+.serif{font-family:var(--serif);font-weight:300;letter-spacing:-.015em;line-height:1.04;margin:0;text-wrap:balance}
+.serif em{font-style:italic;font-weight:300}
+h2.serif{font-size:clamp(44px,6.2vw,96px)}
+h3.serif{font-size:clamp(28px,3vw,44px);font-weight:400}
+.lead{font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:var(--muted);max-width:56ch;margin:28px 0 0;text-wrap:pretty}
+.head{max-width:780px;margin-bottom:clamp(48px,6vw,84px)}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.split .w>span{display:inline-block;transform-origin:0 100%;transition:transform 1.2s var(--ease);transition-delay:calc(var(--k)*45ms)}
+.split.wait .w>span{transform:translateY(108%) rotate(5deg)}
+
+/* signature */
+.sigband{padding-block:clamp(70px,9vw,130px);text-align:center;background:var(--paper);overflow:hidden}
+.sigwrite{--p:1;transition:--p 3.2s cubic-bezier(.45,0,.2,1)}
+.sigwrite.wait{--p:0}
+.sig{margin:0;display:inline-block;position:relative;font-family:var(--script);font-weight:400;line-height:1.3;color:var(--lacquer);font-size:clamp(46px,7.4vw,118px);padding:0 .35em;white-space:nowrap;-webkit-mask-image:linear-gradient(100deg,#000 calc(var(--p) * 140% - 40%),transparent calc(var(--p) * 140% - 10%));mask-image:linear-gradient(100deg,#000 calc(var(--p) * 140% - 40%),transparent calc(var(--p) * 140% - 10%))}
+.sig small{display:block;font-size:.42em;color:var(--gold-dk);line-height:1.1;margin-bottom:.1em}
+.sig-rule{width:min(420px,70%);height:1px;margin:26px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(var(--p))}
+@media (max-width:640px){.sig{white-space:normal}}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--lacquer);z-index:200;pointer-events:none;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),background-color .35s,box-shadow .35s,opacity .3s;display:grid;place-items:center;opacity:0}
+.cur span{font:500 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#FFF8EE;opacity:0;transition:opacity .25s}
+.cur.on{opacity:1}
+.cur.view{width:76px;height:76px;margin:-38px 0 0 -38px;background:rgba(20,10,12,.22);box-shadow:inset 0 0 0 1px rgba(255,248,238,.85);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.cur.view span{opacity:1}
+.cur.link{width:40px;height:40px;margin:-20px 0 0 -20px;background:transparent;box-shadow:inset 0 0 0 1px var(--gold)}
+@media (hover:none),(pointer:coarse){.cur{display:none}}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:61;background:var(--paper)}
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:60;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px max(28px,env(safe-area-inset-right,0px)) 18px max(28px,env(safe-area-inset-left,0px));color:var(--ink);transition:background-color .5s,color .5s,padding .5s,box-shadow .5s}
+.nav.solid{background:rgba(246,240,231,.84);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);padding-block:12px;box-shadow:0 1px 0 var(--line)}
+.nav.dark{color:var(--cream)}.nav.dark.solid{background:rgba(20,10,12,.74);box-shadow:0 1px 0 rgba(244,234,220,.12)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;min-height:44px}
+.brand svg{width:26px;height:26px;color:var(--vermilion);transition:transform .8s var(--ease)}
+.nav.dark .brand svg{color:var(--gold-soft)}
+.brand:hover svg{transform:rotate(45deg)}
+.brand b{font-family:var(--serif);font-weight:400;font-size:16px;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
+.links{display:flex;gap:4px;list-style:none;margin:0;padding:4px;border-radius:999px;background:rgba(255,255,255,.4);box-shadow:inset 0 0 0 1px var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav.dark .links{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(244,234,220,.14)}
+.links a{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:500;white-space:nowrap;transition:background-color .3s,color .3s}
+.links a:hover,.links a.act{background:var(--ink);color:var(--paper)}
+.nav.dark .links a:hover,.nav.dark .links a.act{background:var(--cream);color:var(--night)}
+.links i{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.links .cp{background:var(--lacquer);color:var(--cream)}
+.links .cp:hover{background:#7E1729;color:var(--cream)}
+.menu-btn{justify-self:end;display:flex;align-items:center;gap:12px;background:none;border:0;color:inherit;cursor:pointer;font-size:13.5px;font-weight:500;letter-spacing:.06em;padding:10px 0 10px 10px;min-height:44px}
+.menu-btn .bars{width:26px;height:10px;position:relative}
+.menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:left .5s var(--ease)}
+.menu-btn .bars::before{top:0}.menu-btn .bars::after{bottom:0;left:8px}
+.menu-btn:hover .bars::after{left:0}
+.prog{position:absolute;left:0;bottom:0;height:1.5px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--vermilion),var(--gold))}
+@media (max-width:1180px){.links{display:none}.nav{grid-template-columns:1fr auto}}
+
+/* overlay menu */
+.ov{position:fixed;inset:0;z-index:90;background:var(--night);color:var(--cream);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .9s var(--ease-io),visibility 0s .9s;padding:calc(90px + env(safe-area-inset-top,0px)) max(28px,env(safe-area-inset-right,0px)) calc(70px + env(safe-area-inset-bottom,0px)) max(28px,env(safe-area-inset-left,0px));overflow-y:auto}
+.ov.open{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path .9s var(--ease-io)}
+.ov ol{list-style:none;margin:0;padding:0;align-self:center}
+.ov li{overflow:hidden;border-bottom:1px solid rgba(244,234,220,.1)}
+.ov a{display:flex;align-items:baseline;gap:22px;padding:10px 0;text-decoration:none;transform:translateY(110%);transition:transform .9s var(--ease),color .3s;transition-delay:calc(.25s + var(--k)*60ms)}
+.ov.open a{transform:none}
+.ov a small{font:500 13px/1 var(--sans);color:var(--gold-soft);letter-spacing:.1em;min-width:28px;font-variant-numeric:tabular-nums}
+.ov a span{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.6vw,66px);line-height:1.08}
+.ov a:hover span{font-style:italic;color:var(--gold-soft)}
+.ov-pv{align-self:center;justify-self:center;width:min(440px,80%);aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:3px}
+.ov-pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .6s,transform 1.2s var(--ease)}
+.ov-pv img.on{opacity:1;transform:none}
+.ov-sig{position:absolute;left:max(28px,env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));margin:0;font-family:var(--script);font-size:30px;color:var(--gold-soft);opacity:.85}
+.pill{background:none;border:1px solid rgba(244,234,220,.3);color:var(--cream);border-radius:999px;padding:12px 20px;min-height:44px;cursor:pointer;font-size:13.5px;font-weight:500;letter-spacing:.06em;transition:background-color .3s,color .3s}
+.pill:hover{background:var(--cream);color:var(--night)}
+.ov .pill{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));right:max(28px,env(safe-area-inset-right,0px))}
+@media (max-width:820px){.ov{grid-template-columns:1fr}.ov-pv{display:none}}
+
+/* concept patterns view */
+.cpv{position:fixed;inset:0;z-index:95;background:var(--night);color:var(--cream);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(30px);transition:opacity .5s,transform .7s var(--ease),visibility 0s .5s;overscroll-behavior:contain}
+.cpv.open{opacity:1;visibility:visible;transform:none;transition:opacity .5s,transform .7s var(--ease)}
+.cpv-h{position:sticky;top:0;z-index:3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 18px;padding:calc(16px + env(safe-area-inset-top,0px)) max(28px,env(safe-area-inset-right,0px)) 16px max(28px,env(safe-area-inset-left,0px));background:rgba(20,10,12,.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,234,220,.1)}
+.cpv-h h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,42px);margin:0;line-height:1}
+.cpv-h h2 em{font-style:italic;color:var(--gold-soft)}
+.cpv-h h2 small{font:500 13px/1 var(--sans);letter-spacing:.12em;color:rgba(244,234,220,.55);margin-left:14px;font-variant-numeric:tabular-nums}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:var(--cream);background:rgba(255,255,255,.04);border:1px solid rgba(244,234,220,.2);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer;transition:background-color .3s,color .3s,border-color .3s}
+.chips button i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.chips button.on,.chips button:hover{background:var(--cream);color:var(--night);border-color:var(--cream)}
+.cpv-intro{padding:clamp(36px,6vw,80px) max(28px,env(safe-area-inset-right,0px)) 30px max(28px,env(safe-area-inset-left,0px));max-width:1500px;margin:0 auto}
+.cpv-intro p{margin:0;max-width:62ch;color:rgba(244,234,220,.72);font-size:18px}
+.cpv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,42vw),1fr));gap:14px;padding:0 max(20px,env(safe-area-inset-right,0px)) calc(70px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));max-width:1500px;margin:0 auto}
+.cpv-grid .fig{aspect-ratio:4/5;background:rgba(255,255,255,.04)}
+.cpv-grid .fig img{width:100%;height:100%;object-fit:cover}
+.cpv-grid .fig.out{display:none}
+.cpv-grid .fig figcaption{opacity:1;transform:none;font-size:15px}
+.dl{position:absolute;top:10px;right:10px;z-index:3;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(20,10,12,.55);color:#F8EFE3;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);opacity:0;transform:scale(.9);transition:opacity .3s,transform .3s var(--ease),background-color .3s}
+.dl svg{width:18px;height:18px}.fig:hover .dl,.dl:focus-visible{opacity:1;transform:none}.dl:hover{background:var(--lacquer)}
+@media (hover:none){.dl{opacity:1;transform:none}}
+
+/* hero */
+.hero{position:relative;height:clamp(720px,100svh,1040px);overflow:hidden;isolation:isolate;background:var(--paper)}
+.sky{position:absolute;inset:0;background:radial-gradient(55% 45% at 70% 30%,rgba(232,150,120,.42),transparent 70%),linear-gradient(180deg,#E6BBA9 0%,#EFD0C0 30%,#F3E3D4 56%,var(--paper) 86%)}
+.grain{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.layer{position:absolute;left:var(--x);top:var(--y);width:var(--w);will-change:transform;z-index:2;pointer-events:none}
+.layer img{width:100%;animation:rise 2s var(--ease) both;animation-delay:calc(var(--i,0)*110ms + .1s)}
+.layer img.flip{transform:scaleX(-1);animation-name:riseFlip}
+.far{opacity:.36;filter:blur(1.6px) saturate(.7)}.far2{opacity:.5;filter:blur(.8px) saturate(.8)}
+.sun{filter:drop-shadow(0 0 70px rgba(196,58,40,.35))}
+.ghost{left:50%;top:4%;width:auto;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(200px,34vw,540px);line-height:1;color:var(--lacquer);opacity:.06;white-space:nowrap;z-index:1;animation:fadeIn 2.6s ease both}
+.mist{position:absolute;left:-5%;right:-5%;height:26%;z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(246,240,231,.78) 50%,transparent);animation:drift 18s ease-in-out infinite alternate}
+.m1{top:50%}.m2{top:72%;height:34%;background:linear-gradient(180deg,transparent,rgba(246,240,231,.94) 55%,var(--paper))}
+.crane-path{position:absolute;left:0;top:16%;width:100%;z-index:3;pointer-events:none}
+.crane{width:clamp(100px,11vw,170px);animation:fly 38s linear infinite;animation-delay:-9s;filter:drop-shadow(0 18px 18px rgba(80,20,20,.16))}
+.lantern{transform-origin:70% 0;animation:sway 7s ease-in-out infinite}
+.petals{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
+.frame{position:absolute;inset:calc(78px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) 22px max(22px,env(safe-area-inset-left,0px));z-index:6;pointer-events:none;border:1px solid rgba(106,18,34,.22);animation:fadeIn 2s ease .6s both}
+.frame i{position:absolute;width:22px;height:22px;border-color:var(--lacquer);border-style:solid;opacity:.8}
+.frame .tl{left:-1px;top:-1px;border-width:2px 0 0 2px}.frame .tr{right:-1px;top:-1px;border-width:2px 2px 0 0}
+.frame .bl{left:-1px;bottom:-1px;border-width:0 0 2px 2px}.frame .br{right:-1px;bottom:-1px;border-width:0 2px 2px 0}
+.meta{position:absolute;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(106,18,34,.75);background:var(--paper);padding:2px 10px;white-space:nowrap}
+.meta.m-tl{left:28px;top:-10px}.meta.m-tr{right:28px;top:-10px}.meta.m-bl{left:28px;bottom:-10px}.meta.m-br{right:28px;bottom:-10px;font-variant-numeric:tabular-nums}
+.vtext{position:absolute;right:-118px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:center;font-size:11.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(106,18,34,.6);white-space:nowrap}
+.hero-in{position:relative;z-index:5;height:100%;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:20px;max-width:1320px;margin:0 auto;padding:110px max(56px,env(safe-area-inset-right,0px)) 80px max(56px,env(safe-area-inset-left,0px))}
+.h-copy{position:relative}
+.h-copy::before{content:"";position:absolute;left:-12%;top:-20%;right:-20%;bottom:-24%;background:radial-gradient(closest-side,rgba(247,239,229,.92),rgba(247,239,229,.6) 55%,transparent);z-index:-1}
+.hero .label{animation:up 1.2s var(--ease) .5s both}
+.hero h1{margin:0;font-weight:300;color:var(--lacquer);line-height:.9}
+.h-a,.h-b{font-family:var(--serif);font-weight:300;font-size:clamp(58px,8.6vw,138px);letter-spacing:-.03em;display:block;animation:up 1.5s var(--ease) both}
+.h-a{animation-delay:.65s}.h-b{font-style:italic;animation-delay:.8s;padding-left:.5em}
+.h-c{display:flex;align-items:center;gap:18px;font-family:var(--sans);font-weight:500;font-size:clamp(13px,1.1vw,15px);letter-spacing:.6em;text-transform:uppercase;margin:26px 0 0;color:var(--gold-dk);animation:up 1.5s var(--ease) .95s both}
+.h-c::before{content:"";width:56px;height:1px;background:currentColor}
+.hero .lead{margin:26px 0 34px;max-width:470px;color:#5C463F;animation:up 1.5s var(--ease) 1.1s both}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 28px;min-height:50px;border-radius:999px;background:var(--lacquer);color:var(--cream);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.04em;box-shadow:0 1px 0 rgba(255,255,255,.2) inset,0 14px 30px -14px rgba(106,18,34,.7);transition-property:transform,background-color,box-shadow;transition-duration:.3s;transition-timing-function:var(--ease)}
+.btn svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.btn:hover{background:#7E1729}
+.btn:hover svg{transform:translateY(3px)}
+.btn:active{transform:scale(.97)}
+.btn.ghostbtn{background:rgba(255,255,255,.35);color:var(--lacquer);box-shadow:inset 0 0 0 1px rgba(106,18,34,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.btn.ghostbtn:hover{background:rgba(255,255,255,.6)}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px;animation:up 1.5s var(--ease) 1.25s both}
+.h-sig{font-family:var(--script);font-size:clamp(28px,2.6vw,38px);color:var(--lacquer);margin:30px 0 0;opacity:.9;animation:ink 3s cubic-bezier(.45,0,.2,1) 1.8s both;-webkit-mask-image:linear-gradient(100deg,#000 40%,transparent 60%);mask-image:linear-gradient(100deg,#000 40%,transparent 60%);-webkit-mask-size:300% 100%;mask-size:300% 100%}
+.h-box{position:relative;display:grid;place-items:center;animation:up 1.8s var(--ease) .9s both}
+.h-box::before{content:"";position:absolute;width:min(520px,90%);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,236,220,.85),rgba(232,170,140,.25) 60%,transparent);z-index:-1}
+.h-box .ring{position:absolute;width:min(470px,84%);aspect-ratio:1;border-radius:50%;border:1px dashed rgba(106,18,34,.3);animation:spin 80s linear infinite}
+.h-box .ring.r2{width:min(400px,72%);border-style:solid;border-color:rgba(184,146,90,.35);animation-duration:120s;animation-direction:reverse}
+.stamp{position:absolute;left:10%;bottom:12%;width:64px;height:64px;background:var(--vermilion);color:#F8E9DA;display:grid;place-items:center;font-family:var(--serif);font-size:15px;line-height:1.05;text-align:center;letter-spacing:.06em;box-shadow:0 10px 20px -10px rgba(106,18,34,.8);transform:rotate(-6deg);outline:1px solid rgba(248,233,218,.6);outline-offset:-5px}
+.cue{position:absolute;left:50%;bottom:calc(36px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:7;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:10px}
+.cue i{width:1px;height:40px;background:linear-gradient(var(--lacquer),transparent);transform-origin:top;animation:cue 2.4s var(--ease-io) infinite}
+@media (max-width:900px){
+  .hero{height:auto;min-height:100svh}
+  .hero-in{grid-template-columns:1fr;text-align:center;padding:120px 28px 120px;gap:0}
+  .h-c{justify-content:center}.h-c::before{display:none}.hero .lead{margin-inline:auto}.hero .btns{justify-content:center}.hero .label{justify-content:center}
+  .h-b{padding-left:0}.h-sig{display:none}.h-box{margin-top:30px}.vtext,.meta.m-tr,.meta.m-bl{display:none}
+  .layer{width:calc(var(--w) * 1.5)}.ghost{font-size:62vw;top:12%}
+}
+
+/* 3D box (hero, library, worlds) */
+.stage{perspective:1500px;display:grid;place-items:center;position:relative;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stage:active{cursor:grabbing}
+.box{--W:250px;--H:370px;--D:250px;width:var(--W);height:var(--H);position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx,-14deg)) rotateY(var(--ry,0deg))}
+.box.sm{--W:150px;--H:222px;--D:150px}
+.box.md{--W:200px;--H:296px;--D:200px}
+.face{position:absolute;inset:0;background-size:cover;background-position:center;display:grid;place-items:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:inset 0 0 0 1px rgba(224,194,140,.55)}
+.face::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 40%,rgba(0,0,0,.22))}
+.front{transform:translateZ(calc(var(--D)/2))}.back{transform:rotateY(180deg) translateZ(calc(var(--D)/2))}
+.right{transform:rotateY(90deg) translateZ(calc(var(--W)/2))}.left{transform:rotateY(-90deg) translateZ(calc(var(--W)/2))}
+.top{height:var(--D);top:calc((var(--H) - var(--D))/2);transform:rotateX(90deg) translateZ(calc(var(--H)/2))}
+.bottom{height:var(--D);top:calc((var(--H) - var(--D))/2);transform:rotateX(-90deg) translateZ(calc(var(--H)/2))}
+.band{position:relative;z-index:1;width:46%;height:100%;background:linear-gradient(180deg,#F7EEE2,#EADBC6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 0 1px rgba(184,146,90,.7),0 0 18px rgba(0,0,0,.25)}
+.band b{font-family:var(--serif);font-weight:400;font-size:calc(var(--W) * .058);letter-spacing:.24em;color:var(--lacquer);writing-mode:vertical-rl}
+.band svg{width:38%;color:var(--vermilion)}
+.box.sm .band b{font-size:9px}
+.shadow{position:absolute;bottom:4%;left:50%;width:min(300px,70%);height:40px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(60,20,20,.5),transparent);filter:blur(6px);animation:shadowpulse 6s ease-in-out infinite}
+.float{animation:floaty 6s ease-in-out infinite;transform-style:preserve-3d}
+.h-box .stage{height:560px;width:100%}
+.w-box .stage{height:100%;width:100%}
+.boxzone .stage{width:100%}
+@media (max-width:900px){.h-box .stage{height:420px}.h-box .box{--W:190px;--H:282px;--D:190px}}
+
+/* concept */
+.statement{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.6vw,72px);line-height:1.12;letter-spacing:-.015em;max-width:20ch;margin:0;text-wrap:balance}
+.statement em{font-style:italic;color:var(--vermilion)}
+.c-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(40px,7vw,120px);align-items:end}
+.c-note{color:var(--muted);font-size:18px;max-width:46ch;text-wrap:pretty;margin:0}
+.c-note+.c-note{margin-top:16px}
+.c-note strong{color:var(--ink);font-weight:500}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(70px,9vw,120px)}
+.pillar{position:relative;cursor:zoom-in;background:linear-gradient(180deg,#FBF7F1,#F1E7DA);border-radius:6px;padding:30px 30px 34px;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 0 0 1px var(--line),0 30px 60px -40px rgba(60,30,20,.45);transform-style:preserve-3d;transition:transform .7s var(--ease)}
+.pillar .p-art{position:absolute;inset:30px 24px 170px;display:flex;align-items:center;justify-content:center;transform:translateZ(40px)}
+.pillar .p-art img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 26px 24px rgba(90,30,20,.18));transition:transform 1s var(--ease)}
+@media (hover:hover){.pillar:hover .p-art img{transform:translateY(-8px) scale(1.04)}}
+.p-n{font:500 13px/1 var(--sans);letter-spacing:.14em;color:var(--gold-dk);font-variant-numeric:tabular-nums;margin:0 0 12px}
+.pillar h3{font-size:clamp(30px,2.6vw,40px)}
+.pillar p:last-child{margin:10px 0 0;color:var(--muted);font-size:15.5px;line-height:1.55}
+.motifs{margin-top:clamp(90px,10vw,140px)}
+.m-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}
+.mt{position:relative;cursor:zoom-in;border-radius:6px;padding:22px 14px 20px;background:var(--paper-2);box-shadow:0 0 0 1px var(--line);text-align:center;transition:transform .6s var(--ease),background-color .4s,box-shadow .4s}
+.mt:hover{background:#FBF6EF;box-shadow:0 0 0 1px rgba(106,18,34,.25),0 26px 40px -28px rgba(60,30,20,.5)}
+.mt .a{height:110px;display:grid;place-items:center;margin-bottom:16px}
+.mt img{max-height:104px;width:auto;max-width:100%;transition:transform .9s var(--ease)}
+@media (hover:hover){.mt:hover img{transform:scale(1.1) rotate(-3deg)}}
+.mt b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:24px;color:var(--lacquer);line-height:1.1}
+.mt span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px}
+.worlds3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(90px,10vw,140px)}
+.w3{position:relative;border-radius:6px;overflow:hidden;min-height:300px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:var(--t);background:var(--c);box-shadow:0 30px 60px -40px rgba(0,0,0,.6);transition:transform .6s var(--ease)}
+.w3::before{content:"";position:absolute;inset:0;background:var(--wall) center/300px;opacity:.22;transition:opacity .6s,transform 1.4s var(--ease)}
+.w3:hover{transform:translateY(-6px)}.w3:hover::before{opacity:.36;transform:scale(1.06)}
+.w3>*{position:relative}
+.w3 small{font:500 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.w3 b{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4vw,58px);line-height:1;margin-top:10px}
+.w3 i{font-family:var(--serif);font-size:20px;opacity:.85;margin-top:6px}
+.w3 .sw{display:flex;gap:6px;margin-top:18px}.w3 .sw span{width:22px;height:22px;border-radius:50%;background:var(--s);box-shadow:inset 0 0 0 1px rgba(128,110,100,.35)}
+@media (max-width:1000px){.m-row{grid-template-columns:repeat(4,minmax(0,1fr))}.pillars,.worlds3{grid-template-columns:1fr}.pillar{min-height:380px}.c-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.m-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.marks{margin-top:clamp(90px,10vw,140px)}
+.mk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mk .fig img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.mk .wide{grid-column:span 2}
+@media (max-width:760px){.mk{grid-template-columns:1fr 1fr}.mk .wide{grid-column:1/-1}}
+
+/* figures */
+.fig{margin:0;position:relative;cursor:zoom-in;overflow:hidden;border-radius:4px;background:var(--paper-2)}
+.fig img{width:100%;outline:1px solid rgba(0,0,0,.08);outline-offset:-1px;transition:transform 1.2s var(--ease)}
+@media (hover:hover){.fig:hover img{transform:scale(1.045)}}
+.fig figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 18px 16px;font-family:var(--serif);font-size:16px;font-weight:400;line-height:1.25;color:#F8EFE3;background:linear-gradient(180deg,transparent,rgba(16,8,10,.62));transform:translateY(10px);opacity:0;transition:opacity .45s var(--ease),transform .6s var(--ease);pointer-events:none;text-wrap:balance}
+.fig:hover figcaption,.fig:focus-visible figcaption{opacity:1;transform:none}
+@media (hover:none){.fig figcaption{opacity:1;transform:none}}
+.sheen::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,244,228,.14),transparent 50%);opacity:0;transition:opacity .4s;z-index:2}
+.sheen:hover::after{opacity:1}
+
+/* process */
+.process{position:relative;background:var(--paper-2)}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1700px;display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,48px);padding-top:60px}
+.p-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;padding:0 max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));max-width:1320px;margin:0 auto;width:100%}
+.p-head .label{margin-bottom:14px}
+.p-head h2{font-size:clamp(40px,5vw,76px)}
+.p-count{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3vw,44px);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;margin:0}
+.p-count b{color:var(--lacquer);font-weight:300}
+.p-bar{height:1px;background:var(--line);position:relative;width:min(1272px,calc(100% - 48px));margin:0 auto}
+.p-bar span{position:absolute;inset:0;background:var(--lacquer);transform-origin:0 50%;transform:scaleX(0)}
+.track{display:flex;gap:clamp(24px,3vw,48px);padding:0 max(24px,calc((100vw - 1272px)/2));will-change:transform;transform-style:preserve-3d}
+.step{flex:0 0 min(1040px,84vw);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,3.4vw,56px);align-items:center;transform-style:preserve-3d;will-change:transform}
+.s-n{font-family:var(--serif);font-weight:300;font-size:clamp(64px,7vw,110px);line-height:.9;color:var(--lacquer);margin:0 0 18px;font-variant-numeric:lining-nums tabular-nums}
+.s-vn{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold-dk);margin:10px 0 16px}
+.s-d{color:var(--muted);font-size:16.5px;margin:0;max-width:40ch;text-wrap:pretty}
+.s-art{display:grid;gap:12px;height:min(50vh,520px)}
+.s-art .fig{height:100%}.s-art .fig img{height:100%;object-fit:cover}
+.s-art.n2{grid-template-columns:1fr 1fr}
+.s-art.n3{grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr}.s-art.n3 .fig:first-child{grid-row:span 2}
+.s-art.n4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+@media (max-width:860px){
+  .process{padding-block:90px}.pin{position:static;height:auto;overflow:visible;padding-top:0;perspective:none}
+  .track{overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:24px;padding-bottom:12px;transform:none!important;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .step{flex-basis:84vw;grid-template-columns:1fr;scroll-snap-align:start;transform:none!important;opacity:1!important}.s-art{height:300px}.p-bar,.p-count{display:none}
+}
+
+/* words */
+.words{overflow:hidden;padding-block:clamp(40px,6vw,80px);background:var(--paper);border-block:1px solid var(--line)}
+.words div{white-space:nowrap;font-family:var(--serif);font-weight:300;font-size:clamp(46px,7vw,110px);line-height:1.12;will-change:transform}
+.words .w1{color:var(--lacquer)}.words .w2{color:transparent;-webkit-text-stroke:1px rgba(106,18,34,.42);font-style:italic}
+
+/* library */
+.library{background:radial-gradient(120% 70% at 50% 0%,#33101A 0%,#1A0A0F 55%,var(--night) 100%);color:var(--cream);overflow:hidden}
+.library .label,.world.dark .label{color:var(--gold-soft)}
+.library .lead{color:rgba(244,234,220,.72)}
+.library .serif{color:#F7ECDE}
+.row{margin-top:56px;position:relative;z-index:2}
+.row-h{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));max-width:1320px;margin:0 auto 22px}
+.row-h h3{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.6vw,38px);margin:0;display:flex;align-items:center;gap:14px}
+.row-h h3 i{width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.row-h h3 small{font:500 13px/1 var(--sans);letter-spacing:.12em;opacity:.6;font-variant-numeric:tabular-nums}
+.arrows{display:flex;gap:10px}
+.arrows button{width:48px;height:48px;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;opacity:.65;cursor:pointer;display:grid;place-items:center;transition-property:opacity,background-color,color,transform;transition-duration:.3s}
+.arrows button:hover{opacity:1;background:var(--cream);color:var(--night)}
+.arrows button:active{transform:scale(.94)}
+.world.light .arrows button:hover{background:var(--ink);color:var(--paper)}
+.arrows svg{width:18px;height:18px}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(24px,calc((100vw - 1272px)/2));padding:10px max(24px,calc((100vw - 1272px)/2)) 22px;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.car::-webkit-scrollbar{display:none}
+.car.drag{cursor:grabbing;scroll-snap-type:none}
+.car.drag .fig{pointer-events:none}
+.car .fig{flex:0 0 auto;scroll-snap-align:start;box-shadow:0 30px 50px -30px rgba(0,0,0,.55);will-change:transform}
+.car .fig img{height:clamp(240px,26vw,380px);width:auto;max-width:none}
+.car.lg .fig img{height:clamp(280px,32vw,480px)}
+.car .fig.small img{height:auto;max-height:clamp(240px,26vw,380px)}
+.more-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:50px;position:relative;z-index:2;padding:0 24px}
+.more-row .btn{background:var(--cream);color:var(--night)}
+.more-row .btn:hover{background:#fff}
+.boxzone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;margin-top:clamp(90px,10vw,140px)}
+.boxzone .lead{margin-bottom:28px}
+.boxzone .stage{height:600px}
+.faces{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.faces button{font-size:13.5px;font-weight:500;color:var(--cream);background:rgba(255,255,255,.04);border:1px solid rgba(244,234,220,.2);border-radius:999px;padding:10px 16px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:9px;transition-property:background-color,color,border-color;transition-duration:.3s}
+.faces button i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.faces button:hover,.faces button.on{background:var(--cream);color:var(--night);border-color:var(--cream)}
+@media (max-width:860px){.boxzone{grid-template-columns:1fr}.boxzone .stage{height:500px}.boxzone .box{--W:210px;--H:310px;--D:210px}}
+
+/* worlds */
+.world{background:var(--bg);color:var(--fg);position:relative}
+.world.dark .lead,.world.dark .w-line,.world.dark .w-sub p{color:rgba(244,234,220,.74)}
+.world.light .lead,.world.light .w-line,.world.light .w-sub p{color:var(--muted)}
+.w-intro{overflow:hidden}
+.w-intro::before{content:attr(data-w);position:absolute;left:50%;top:clamp(20px,4vw,60px);transform:translateX(calc(-50% + var(--wx,0px)));font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(150px,24vw,380px);line-height:.9;white-space:nowrap;color:var(--fg);opacity:.05;pointer-events:none}
+.w-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,100px);align-items:center}
+.w-num{font:500 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.8;margin:0 0 22px;display:flex;gap:14px;align-items:center}
+.w-num::before{content:"";width:28px;height:1px;background:currentColor}
+.world h2.serif{font-size:clamp(64px,9vw,148px);letter-spacing:-.03em}
+.w-vn{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(24px,2.6vw,38px);color:var(--acc);margin:10px 0 26px}
+.w-line{font-size:18px;max-width:44ch;margin:0 0 34px;text-wrap:pretty}
+.pal{list-style:none;margin:0;padding:0;display:flex;max-width:460px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px rgba(128,110,100,.25),0 20px 40px -30px rgba(0,0,0,.5)}
+.pal li{flex:1;height:120px;background:var(--s);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-size:13px;font-weight:500;line-height:1.35;color:var(--t);transition:flex-grow .6s var(--ease)}
+.pal li:hover{flex-grow:1.8}
+.pal small{display:block;font-size:12px;font-weight:400;opacity:.8;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.w-hero{position:relative;aspect-ratio:4/5;max-height:760px;width:100%;transform-style:preserve-3d;transition:transform .7s var(--ease)}
+.w-hero .fig{position:absolute;inset:0;clip-path:circle(var(--r,72%) at 50% 50%);border-radius:0}
+.w-hero .fig img{width:100%;height:100%;object-fit:cover}
+.w-ring{position:absolute;inset:-16px;border:1px dashed var(--acc);border-radius:50%;opacity:.4;pointer-events:none;animation:spin 60s linear infinite}
+.w-box{position:absolute;left:-60px;bottom:-40px;z-index:4;height:340px;width:260px}
+.fmotif{position:absolute;right:-30px;top:140px;width:clamp(180px,20vw,320px);z-index:3;pointer-events:none;filter:drop-shadow(0 30px 30px rgba(0,0,0,.2));will-change:transform}
+.fmotif.f2{right:auto;left:-40px;top:auto;bottom:6%;width:clamp(140px,14vw,230px);opacity:.9}
+.fmotif.f3{right:8%;top:auto;bottom:-30px;width:clamp(120px,11vw,190px);opacity:.85;filter:blur(1px) drop-shadow(0 20px 20px rgba(0,0,0,.2))}
+.w-block{margin-top:clamp(100px,11vw,160px)}
+.w-sub{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 30px;margin-bottom:36px;flex-wrap:wrap}
+.w-sub h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.2vw,64px);margin:0;line-height:1.04}
+.w-sub h3 em{font-style:italic;color:var(--acc)}
+.w-sub p{margin:0;max-width:42ch;font-size:16.5px}
+.wall{position:relative;overflow:hidden;background-image:linear-gradient(var(--bga),var(--bga)),var(--wall);background-size:auto,560px;padding-block:clamp(90px,10vw,140px)}
+.stack{position:relative}
+.card{position:sticky;top:calc(140px + var(--i)*14px);margin:0 auto 10vh;width:min(1180px,100%,var(--cw),calc((100vh - 180px) * var(--ar)));aspect-ratio:var(--ar);border-radius:10px;overflow:hidden;box-shadow:0 50px 90px -40px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.16) inset;transform-origin:50% 0;cursor:zoom-in;background:var(--bg)}
+.card img{width:100%;height:100%;object-fit:cover;outline:0;transition:transform 1.6s var(--ease)}
+@media (hover:hover){.card:hover img{transform:scale(1.03)}}
+.card figcaption{left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:70px 28px 22px;background:linear-gradient(180deg,transparent,rgba(12,6,8,.6));border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none;opacity:1;transform:none}
+.card .ct{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.8vw,42px);line-height:1}
+.card .cn{font:500 13px/1 var(--sans);letter-spacing:.14em;font-variant-numeric:tabular-nums;opacity:.9}
+.stack .card:last-child{margin-bottom:0}
+.details{columns:4 250px;column-gap:16px}
+.details .fig{break-inside:avoid;margin:0 0 16px;max-width:var(--cw,100%)}
+.details .fig img{width:100%;height:auto}
+.world.dark .fig{background:rgba(255,255,255,.05)}
+@media (max-width:860px){.details{columns:2 140px;column-gap:10px}.details .fig{margin-bottom:10px}.details .fig figcaption{font-size:13.5px;padding:34px 10px 10px}.w-top{grid-template-columns:1fr}.fmotif{display:none}.card{top:calc(124px + var(--i)*10px);border-radius:8px}.card figcaption{padding:50px 16px 14px}.w-box{left:auto;right:-10px;bottom:-30px;transform:scale(.7);transform-origin:bottom right}}
+
+/* world sub-nav */
+.wnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:40;background:var(--bga);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 1px 0 rgba(128,110,100,.22),0 -1px 0 rgba(128,110,100,.12)}
+.wnav-in{display:flex;align-items:center;gap:6px;padding-block:10px;overflow-x:auto;scrollbar-width:none}
+.wnav-in::-webkit-scrollbar{display:none}
+.wn-t{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:20px;margin-right:14px;white-space:nowrap}
+.wn-t i{width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.wnav a{flex:none;display:flex;align-items:center;gap:8px;min-height:40px;padding:0 15px;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:500;color:inherit;opacity:.78;transition:background-color .3s,color .3s,opacity .3s}
+.wnav a small{font-size:12px;opacity:.6;font-variant-numeric:tabular-nums}
+.wnav a:hover,.wnav a.act{opacity:1;background:var(--fg);color:var(--bg)}
+.wn-sw{margin-left:auto;display:flex;gap:6px;padding-left:14px}
+.wn-sw a{padding:0 12px 0 10px;opacity:.9;box-shadow:inset 0 0 0 1px rgba(128,110,100,.35)}
+.wn-sw a i{width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(128,110,100,.5)}
+.wn-sw a.cur-w{background:var(--fg);color:var(--bg)}
+.w-anchor{scroll-margin-top:130px}
+@media (max-width:860px){.wnav{top:calc(env(safe-area-inset-top,0px) + 60px)}.wn-t{font-size:17px;margin-right:4px}.wn-sw span{display:none}.wn-sw a{padding:0 12px}}
+
+/* close */
+.close{background:linear-gradient(180deg,var(--paper),#EEDCCD);text-align:center;overflow:hidden}
+.close-in{max-width:960px}
+.close-lotus{width:min(280px,58vw);margin:0 auto 34px;animation:floaty 8s ease-in-out infinite}
+.close .label{justify-content:center}.close .label::after{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
+.close h2{color:var(--lacquer)}
+.close .lead{margin:26px auto 0}
+.close .worlds3{margin-top:54px;text-align:left}
+.close .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:44px}
+.thanks{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(36px,4vw,56px);color:var(--lacquer);margin:70px 0 10px}
+.close .sig{margin-top:10px}
+footer{margin-top:clamp(70px,9vw,120px);font-size:13px;letter-spacing:.08em;color:var(--muted);text-align:center;padding:0 24px}
+
+/* ornament */
+.orn{width:min(600px,100%);height:40px;color:var(--acc,var(--gold));display:block;margin:30px 0 0}
+.orn path{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 2.4s var(--ease)}
+.orn.wait path{stroke-dashoffset:1}
+
+/* reveal */
+.rv{transition:transform 1.2s var(--ease),opacity 1.2s var(--ease);transition-delay:calc(var(--sd,0) * 90ms)}
+.rv.wait{transform:perspective(1200px) translateY(70px) rotateX(16deg) scale(.97);opacity:.1;transform-origin:50% 0}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:150;background:rgba(14,7,9,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;opacity:0;visibility:hidden;transition:opacity .4s,visibility 0s .4s;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) 0 env(safe-area-inset-left,0px);color:var(--cream)}
+.lb.open{opacity:1;visibility:visible;transition:opacity .4s}
+.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 20px;font-size:14px}
+.lb-top>span{font-variant-numeric:tabular-nums;opacity:.7}
+.lb-bot span:first-child{font-family:var(--serif);font-size:20px}
+.lb-bot span:last-child{opacity:.55;font-size:13px}
+.lb-view{overflow:auto;display:grid;place-items:center;padding:0 84px;min-height:0;overscroll-behavior:contain}
+.lb-view img{max-width:100%;max-height:100%;width:auto;height:auto;cursor:zoom-in;box-shadow:0 40px 90px rgba(0,0,0,.6);animation:lbIn .45s var(--ease)}
+.lb.zoom .lb-view{place-items:start center}
+.lb.zoom .lb-view img{max-width:none;max-height:none;cursor:zoom-out}
+.lb-tools{display:flex;gap:10px;align-items:center}
+.lb-tools a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border-radius:999px;background:var(--cream);color:var(--night);text-decoration:none;font-size:13.5px;font-weight:500;transition:background-color .3s,transform .2s}
+.lb-tools a:hover{background:#fff}.lb-tools a:active{transform:scale(.97)}.lb-tools a svg{width:16px;height:16px}
+.lb button{background:rgba(255,255,255,.04);border:1px solid rgba(244,234,220,.25);color:var(--cream);width:48px;height:48px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition-property:background-color,color,transform;transition-duration:.3s}
+.lb button svg{width:18px;height:18px}
+.lb button:hover{background:var(--cream);color:var(--night)}
+.lb button:active{transform:scale(.94)}
+.lb .nx,.lb .pv{position:absolute;top:45%;margin-top:-24px}
+.lb .pv{left:calc(16px + env(safe-area-inset-left,0px))}.lb .nx{right:calc(16px + env(safe-area-inset-right,0px))}
+.lb-strip{display:flex;gap:8px;overflow-x:auto;padding:4px 20px calc(14px + env(safe-area-inset-bottom,0px));scrollbar-width:none;scroll-behavior:smooth}
+.lb-strip::-webkit-scrollbar{display:none}
+.lb .lb-strip button{flex:none;width:auto;height:60px;padding:0;border-radius:3px;overflow:hidden;border:0;background:#2a1a1e;opacity:.45;box-shadow:none;transition:opacity .3s,transform .3s var(--ease),box-shadow .3s}
+.lb-strip button img{height:60px;width:auto;display:block}
+.lb .lb-strip button:hover{opacity:.85;background:#2a1a1e}
+.lb .lb-strip button.on{opacity:1;box-shadow:0 0 0 2px var(--gold-soft);transform:translateY(-2px)}
+@media (max-width:700px){.lb-view{padding:0 6px}.lb .nx,.lb .pv{display:none}.lb-bot span:last-child{display:none}.lb-tools a b{display:none}.lb-tools a{padding:0 14px}.lb .lb-strip button,.lb-strip button img{height:50px}}
+
+@keyframes rise{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+@keyframes riseFlip{from{opacity:0;transform:scaleX(-1) translateY(60px)}to{opacity:1;transform:scaleX(-1)}}
+@keyframes up{from{opacity:0;transform:translateY(28px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes ink{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes drift{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+@keyframes fly{0%{transform:translate(-30vw,60px) rotate(-5deg)}25%{transform:translate(20vw,0) rotate(0)}50%{transform:translate(55vw,-50px) rotate(3deg)}75%{transform:translate(85vw,-10px) rotate(-2deg)}100%{transform:translate(125vw,-70px) rotate(2deg)}}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes shadowpulse{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(.86);opacity:.7}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes lbIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}.crane-path{display:none}.rv.wait,.split.wait .w>span{transform:none;opacity:1}.card{position:relative;top:auto}.sigwrite.wait{--p:1}
+}
+</style>
+</head>
+<body>
+
+
+<div class="cur" id="cur"><span>View</span></div>
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Vietnam Nish Parfume, back to top"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>Vietnam Nish</b></a>
+  <ul class="links">
+    <li><a href="#concept">Concept</a></li><li><a href="#process">Process</a></li><li><a href="#library">Patterns</a></li>
+    <li><a href="#ivory"><i style="--c:#F4ECE0"></i>Ivory</a></li><li><a href="#lacquer"><i style="--c:#4A0B16"></i>Lacquer</a></li><li><a href="#jade"><i style="--c:#12231A"></i>Jade</a></li>
+    <li><a class="cp" href="#concept-patterns">Concept Patterns</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="ov">Menu <span class="bars"></span></button>
+  <span class="prog" id="prog"></span>
+</nav>
+<div class="ov" id="ov" aria-hidden="true">
+  <button class="pill" id="ovClose" type="button">Close</button>
+  <ol><li><a href="#concept" style="--k:0"><small>01</small><span>Concept</span></a></li><li><a href="#process" style="--k:1"><small>02</small><span>Process</span></a></li><li><a href="#library" style="--k:2"><small>03</small><span>Pattern library</span></a></li><li><a href="#ivory" style="--k:3"><small>04</small><span>Ivory</span></a></li><li><a href="#lacquer" style="--k:4"><small>05</small><span>Lacquer</span></a></li><li><a href="#jade" style="--k:5"><small>06</small><span>Jade</span></a></li><li><a href="#concept-patterns" style="--k:6"><small>07</small><span>Concept Patterns</span></a></li><li><a href="#next" style="--k:7"><small>08</small><span>Next step</span></a></li></ol>
+  <div class="ov-pv"><img src="img/043.webp" alt="" loading="lazy"><img src="img/136.webp" alt="" loading="lazy"><img src="img/070.webp" alt="" loading="lazy"><img src="img/107_hero.webp" alt="" loading="lazy"><img src="img/059_pack.webp" alt="" loading="lazy"><img src="img/095_box.webp" alt="" loading="lazy"><img src="img/132.webp" alt="" loading="lazy"><img src="img/063_gift.webp" alt="" loading="lazy"></div>
+  <p class="ov-sig">Design Concept by Liudmila Mamula</p>
+</div>
+<section class="cpv" id="concept-patterns" aria-hidden="true" aria-label="Concept Patterns"><div class="cpv-h"><h2>Concept <em>Patterns</em><small id="cpvN">40</small></h2><div class="chips"><button type="button" data-f="all" class="on"><i style="--c:#B8925A"></i>All · 40</button><button type="button" data-f="ivory"><i style="--c:#F4ECE0"></i>Ivory · 23</button><button type="button" data-f="lacquer"><i style="--c:#6A1222"></i>Lacquer · 6</button><button type="button" data-f="jade"><i style="--c:#1C3328"></i>Jade · 4</button><button type="button" data-f="indigo"><i style="--c:#1F2F55"></i>Indigo · 4</button></div><button type="button" class="pill cpv-close">Close</button></div><div class="cpv-intro"><p>Every seamless pattern in one place, grouped by colour world. Tap any pattern to open it full-screen, then swipe or use the arrows to browse.</p></div><div class="cpv-grid"><figure class="fig " data-i="213" data-w="ivory"><img src="img/090.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 01"><figcaption>Ivory · 01</figcaption></figure><figure class="fig " data-i="214" data-w="ivory"><img src="img/072.webp" width="1185" height="1327" loading="lazy" decoding="async" alt="Ivory · 02"><figcaption>Ivory · 02</figcaption></figure><figure class="fig " data-i="215" data-w="ivory"><img src="img/076.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 03"><figcaption>Ivory · 03</figcaption></figure><figure class="fig " data-i="216" data-w="ivory"><img src="img/088.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Ivory · 04"><figcaption>Ivory · 04</figcaption></figure><figure class="fig " data-i="217" data-w="ivory"><img src="img/089.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 05"><figcaption>Ivory · 05</figcaption></figure><figure class="fig " data-i="218" data-w="ivory"><img src="img/119.webp" width="1199" height="1312" loading="lazy" decoding="async" alt="Ivory · 06"><figcaption>Ivory · 06</figcaption></figure><figure class="fig " data-i="219" data-w="ivory"><img src="img/074.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 07"><figcaption>Ivory · 07</figcaption></figure><figure class="fig " data-i="220" data-w="ivory"><img src="img/087.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 08"><figcaption>Ivory · 08</figcaption></figure><figure class="fig " data-i="221" data-w="ivory"><img src="img/111.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 09"><figcaption>Ivory · 09</figcaption></figure><figure class="fig " data-i="222" data-w="ivory"><img src="img/112.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="Ivory · 10"><figcaption>Ivory · 10</figcaption></figure><figure class="fig " data-i="223" data-w="ivory"><img src="img/133.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 11"><figcaption>Ivory · 11</figcaption></figure><figure class="fig " data-i="224" data-w="ivory"><img src="img/135.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 12"><figcaption>Ivory · 12</figcaption></figure><figure class="fig " data-i="225" data-w="ivory"><img src="img/139.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 13"><figcaption>Ivory · 13</figcaption></figure><figure class="fig " data-i="226" data-w="ivory"><img src="img/138.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 14"><figcaption>Ivory · 14</figcaption></figure><figure class="fig " data-i="227" data-w="ivory"><img src="img/069.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 15"><figcaption>Ivory · 15</figcaption></figure><figure class="fig " data-i="228" data-w="ivory"><img src="img/097.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 16"><figcaption>Ivory · 16</figcaption></figure><figure class="fig " data-i="229" data-w="ivory"><img src="img/057.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 17"><figcaption>Ivory · 17</figcaption></figure><figure class="fig " data-i="230" data-w="ivory"><img src="img/092.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 18"><figcaption>Ivory · 18</figcaption></figure><figure class="fig " data-i="231" data-w="ivory"><img src="img/094.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 19"><figcaption>Ivory · 19</figcaption></figure><figure class="fig " data-i="232" data-w="ivory"><img src="img/120.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 20"><figcaption>Ivory · 20</figcaption></figure><figure class="fig " data-i="233" data-w="ivory"><img src="img/086.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 21"><figcaption>Ivory · 21</figcaption></figure><figure class="fig " data-i="234" data-w="ivory"><img src="img/084.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Ivory · 22"><figcaption>Ivory · 22</figcaption></figure><figure class="fig " data-i="235" data-w="ivory"><img src="img/091.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 23"><figcaption>Ivory · 23</figcaption></figure><figure class="fig " data-i="236" data-w="ivory"><img src="img/080.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Ivory · 24"><figcaption>Ivory · 24</figcaption></figure><figure class="fig " data-i="237" data-w="lacquer"><img src="img/132.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Lacquer · 01"><figcaption>Lacquer · 01</figcaption></figure><figure class="fig " data-i="238" data-w="lacquer"><img src="img/140.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Lacquer · 02"><figcaption>Lacquer · 02</figcaption></figure><figure class="fig " data-i="239" data-w="lacquer"><img src="img/081.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Lacquer · 03"><figcaption>Lacquer · 03</figcaption></figure><figure class="fig " data-i="240" data-w="lacquer"><img src="img/145.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Lacquer · 04"><figcaption>Lacquer · 04</figcaption></figure><figure class="fig " data-i="241" data-w="lacquer"><img src="img/118.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Lacquer · 05"><figcaption>Lacquer · 05</figcaption></figure><figure class="fig " data-i="242" data-w="lacquer"><img src="img/068.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Lacquer · 06"><figcaption>Lacquer · 06</figcaption></figure><figure class="fig " data-i="243" data-w="lacquer"><img src="img/070.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Lacquer · 07"><figcaption>Lacquer · 07</figcaption></figure><figure class="fig " data-i="244" data-w="jade"><img src="img/071.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Jade · 01"><figcaption>Jade · 01</figcaption></figure><figure class="fig " data-i="245" data-w="jade"><img src="img/073.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Jade · 02"><figcaption>Jade · 02</figcaption></figure><figure class="fig " data-i="246" data-w="jade"><img src="img/085.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Jade · 03"><figcaption>Jade · 03</figcaption></figure><figure class="fig " data-i="247" data-w="jade"><img src="img/054.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Jade · 04"><figcaption>Jade · 04</figcaption></figure><figure class="fig " data-i="248" data-w="jade"><img src="img/093.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Jade · 05"><figcaption>Jade · 05</figcaption></figure><figure class="fig " data-i="249" data-w="indigo"><img src="img/058.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Indigo · 01"><figcaption>Indigo · 01</figcaption></figure><figure class="fig " data-i="250" data-w="indigo"><img src="img/075.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Indigo · 02"><figcaption>Indigo · 02</figcaption></figure><figure class="fig " data-i="251" data-w="indigo"><img src="img/078.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Indigo · 03"><figcaption>Indigo · 03</figcaption></figure><figure class="fig " data-i="252" data-w="indigo"><img src="img/144.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Indigo · 04"><figcaption>Indigo · 04</figcaption></figure></div></section>
+
+<main>
+<header class="hero" id="top">
+  <div class="sky"></div>
+  <div class="layer" data-d="0.06" style="--x:62%;--y:12%;--w:min(30vw,400px)"><img class="sun" src="img/cut_sun.webp" alt="" width="748" height="380"></div>
+  <div class="ghost layer" data-d="0.1" aria-hidden="true">Hương</div>
+  <div class="layer far" data-d="0.18" style="--x:-6%;--y:46%;--w:62vw"><img src="img/cut_mount.webp" alt="" width="804" height="348"></div>
+  <div class="layer far2" data-d="0.22" style="--x:48%;--y:50%;--w:58vw"><img class="flip" src="img/cut_mount.webp" alt="" width="804" height="348"></div>
+  <div class="mist m1"></div>
+  <div class="layer" data-d="0.34" style="--x:-12%;--y:58%;--w:78vw"><img src="img/cut_mount.webp" alt="" width="804" height="348"></div>
+  <div class="mist m2"></div>
+  <div class="crane-path"><img class="crane" src="img/cut_crane.webp" alt="" width="562" height="556"></div>
+  <div class="layer" data-d="0.5" style="--x:87%;--y:6%;--w:min(17vw,230px)"><img class="lantern" src="img/cut_roof.webp" alt="" width="528" height="580"></div>
+  <div class="layer" data-d="0.6" style="--x:38%;--y:8%;--w:min(17vw,230px)"><img src="img/cut_plum.webp" alt="" width="784" height="408"></div>
+  <div class="layer" data-d="0.75" style="--x:80%;--y:62%;--w:min(24vw,320px)"><img src="img/cut_bamboo.webp" alt="" width="568" height="420"></div>
+  <div class="layer" data-d="0.9" style="--x:-9%;--y:80%;--w:min(24vw,330px)"><img src="img/cut_lotus.webp" alt="" width="744" height="508"></div>
+  <canvas class="petals" data-n="34" data-tone="light"></canvas>
+  <div class="grain"></div>
+  <div class="frame" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+    <span class="meta m-tl">Design concept · 2026</span><span class="meta m-tr">Hương · the scent of Vietnam</span>
+    <span class="meta m-bl">Sen · Hạc · Hạ Long · Mái đình</span><span class="meta m-br">For Lanh Nguyen</span>
+    <span class="vtext">Vietnam Nish Parfume · Brand identity</span></div>
+  <div class="hero-in">
+    <div class="h-copy">
+      <p class="label">Brand identity · Design concept</p>
+      <h1><span class="h-a">Vietnam</span><span class="h-b">Nish</span><span class="h-c">Parfume</span></h1>
+      <p class="lead">Three colour worlds for one house of scent. Everything we created, from the first lotus line to the boutique itself.</p>
+      <div class="btns"><a class="btn" href="#concept">Begin the journey <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      <a class="btn ghostbtn" href="#concept-patterns">Concept Patterns</a></div>
+      <p class="h-sig">Design Concept by Liudmila Mamula</p>
+    </div>
+    <div class="h-box"><span class="ring"></span><span class="ring r2"></span><div class="stage" data-mouse="1" data-speed="0.12" data-start="-32" aria-label="Vietnam Nish flacon box. Drag to turn, tap a side to open its pattern."><div class="float"><div class="box "><div class="face front" data-i="0" style="background-image:url(img/132.webp)"><div class="band"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>VIETNAM NISH</b></div></div><div class="face right" data-i="1" style="background-image:url(img/072.webp)"></div><div class="face back" data-i="2" style="background-image:url(img/071.webp)"></div><div class="face left" data-i="3" style="background-image:url(img/070.webp)"></div><div class="face top" data-i="4" style="background-image:url(img/135.webp)"></div><div class="face bottom" data-i="5" style="background-image:url(img/075.webp)"></div></div></div><div class="shadow"></div></div><span class="stamp">VN<br>NISH</span></div>
+  </div>
+  <a class="cue" href="#concept"><i></i>Scroll</a>
+</header>
+<section class="sigband"><div class="sigwrite"><p class="sig"><small>Design Concept by</small>Liudmila Mamula</p><div class="sig-rule"></div></div></section>
+<section class="sec concept" id="concept"><div class="wrap">
+<p class="label rv">01 · The concept</p>
+<div class="c-grid"><p class="statement rv">A modern perfume house drawn from <em>Vietnam’s nature</em>, its architecture and its ornament.</p>
+<div class="rv"><p class="c-note">The brief was clear: <strong>minimalism that is never boring</strong>, with one artistic signature and no souvenir clichés. The same visual language has to work on social media, in the boutique, on bags and on the team’s uniforms.</p>
+<p class="c-note">Our signature is the <strong>lacquer-red line</strong>: a fine ink drawing filled with cinnabar and lit with cream, set on rice paper, velvet or gold. Since the direction is still open, we present all of it, organised into three colour worlds.</p></div></div>
+<div class="pillars">
+<article class="pillar rv" data-i="6"><div class="p-art"><img src="img/cut_lotus.webp" width="744" height="508" alt="" loading="lazy"></div><p class="p-n">01</p><h3 class="serif">Nature</h3><p>Lotus, crane, apricot blossom and bamboo are living symbols, drawn with one fine ink line.</p></article>
+<article class="pillar rv" data-i="7"><div class="p-art"><img src="img/cut_roof.webp" width="528" height="580" alt="" loading="lazy"></div><p class="p-n">02</p><h3 class="serif">Architecture</h3><p>Pagoda roofs, lattice screens and seal frames give the system its geometry.</p></article>
+<article class="pillar rv" data-i="8"><div class="p-art"><img src="img/cut_mount.webp" width="804" height="348" alt="" loading="lazy"></div><p class="p-n">03</p><h3 class="serif">Landscape</h3><p>Ha Long’s karst peaks and the red sun bring horizon, air and calm.</p></article>
+</div><div class="motifs"><div class="head rv"><p class="label">The details · seven motifs</p><h2 class="serif">One family of <em>motifs</em></h2></div><div class="m-row">
+<div class="mt rv" data-i="9"><div class="a"><img src="img/cut_lotus.webp" width="744" height="508" alt="Lotus motif" loading="lazy"></div><b>Sen</b><span>Lotus</span></div>
+<div class="mt rv" data-i="10"><div class="a"><img src="img/cut_crane.webp" width="562" height="556" alt="Crane motif" loading="lazy"></div><b>Hạc</b><span>Crane</span></div>
+<div class="mt rv" data-i="11"><div class="a"><img src="img/cut_mount.webp" width="804" height="348" alt="Karst bay motif" loading="lazy"></div><b>Hạ Long</b><span>Karst bay</span></div>
+<div class="mt rv" data-i="12"><div class="a"><img src="img/cut_roof.webp" width="528" height="580" alt="Pagoda roof motif" loading="lazy"></div><b>Mái đình</b><span>Pagoda roof</span></div>
+<div class="mt rv" data-i="13"><div class="a"><img src="img/cut_plum.webp" width="784" height="408" alt="Apricot blossom motif" loading="lazy"></div><b>Hoa mai</b><span>Apricot blossom</span></div>
+<div class="mt rv" data-i="14"><div class="a"><img src="img/cut_sun.webp" width="748" height="380" alt="Red sun motif" loading="lazy"></div><b>Mặt trời</b><span>Red sun</span></div>
+<div class="mt rv" data-i="15"><div class="a"><img src="img/cut_bamboo.webp" width="568" height="420" alt="Bamboo motif" loading="lazy"></div><b>Tre</b><span>Bamboo</span></div>
+</div></div><div class="marks"><div class="head rv"><p class="label">The signature · six marks</p><h2 class="serif">Signing <em>Vietnam Nish</em></h2><p class="lead">A gilt emblem, a lacquer seal, a crane under a red sun, a calligraphic script and a monogram. Each one works in a single colour, in gold foil and as a blind emboss.</p></div><div class="mk"><figure class="fig wide rv" data-i="16"><img src="img/043.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Gold emblem · lotus &amp; incense"><figcaption>Gold emblem · lotus &amp; incense</figcaption></figure><figure class="fig rv" data-i="17"><img src="img/045.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Emblem · crane &amp; red sun"><figcaption>Emblem · crane &amp; red sun</figcaption></figure><figure class="fig rv" data-i="18"><img src="img/044.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Lacquer emblem · lotus &amp; waves"><figcaption>Lacquer emblem · lotus &amp; waves</figcaption></figure><figure class="fig rv" data-i="19"><img src="img/041.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Wordmark · lotus flourish"><figcaption>Wordmark · lotus flourish</figcaption></figure><figure class="fig rv" data-i="20"><img src="img/042.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Script wordmark · four treatments"><figcaption>Script wordmark · four treatments</figcaption></figure></div></div>
+<div class="worlds3"><a class="w3 rv" href="#ivory" style="--c:#F4ECE0;--t:#231815;--wall:url(img/072.webp)"><small>04 · World</small><b>Ivory</b><i>Ngà · rice paper & vermilion ink</i><span class="sw"><span style="--s:#F6EEE2"></span><span style="--s:#A3262F"></span><span style="--s:#E9C8B8"></span><span style="--s:#5F6B4E"></span></span></a><a class="w3 rv" href="#lacquer" style="--c:#4A0B16;--t:#F4E8DA;--wall:url(img/140.webp)"><small>05 · World</small><b>Lacquer</b><i>Sơn mài · cinnabar & gold leaf</i><span class="sw"><span style="--s:#6A1222"></span><span style="--s:#C9A06A"></span><span style="--s:#F2E4D3"></span><span style="--s:#2B1A17"></span></span></a><a class="w3 rv" href="#jade" style="--c:#12231A;--t:#F1E7D6;--wall:url(img/085.webp)"><small>06 · World</small><b>Jade</b><i>Ngọc bích · jade & gold foil</i><span class="sw"><span style="--s:#1C3328"></span><span style="--s:#C9A45C"></span><span style="--s:#F1E7D6"></span><span style="--s:#5F6B4E"></span></span></a></div></div></section>
+<section class="process" id="process"><div class="pin"><div class="p-head"><div><p class="label">02 · Quá trình</p><h2 class="serif nosplit">How we got here</h2></div><p class="p-count"><b id="pCount">01</b> / 08</p></div><div class="p-bar"><span></span></div><div class="track">
+<article class="step"><div class="s-txt"><p class="s-n">01</p><h3 class="serif">The brief</h3><p class="s-vn">Bản tóm tắt</p><p class="s-d">You asked for a premium, modern brand built from Vietnam’s nature, architecture and ornament, with no souvenir clichés. Minimalism, but never boring.</p></div><div class="s-art n3"><figure class="fig " data-i="21"><img src="img/023.webp" width="735" height="482" loading="lazy" decoding="async" alt="Reference · auspicious symbols"></figure><figure class="fig " data-i="22"><img src="img/024.webp" width="736" height="736" loading="lazy" decoding="async" alt="Reference · seal characters"></figure><figure class="fig " data-i="23"><img src="img/028.webp" width="736" height="1104" loading="lazy" decoding="async" alt="Reference · floral shapes"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">02</p><h3 class="serif">First sketches</h3><p class="s-vn">Phác thảo đầu tiên</p><p class="s-d">We started with loose motif sheets: lotus, crane, karst bay, pagoda roof and red sun, to find one drawing hand for the whole brand.</p></div><div class="s-art n2"><figure class="fig " data-i="24"><img src="img/137.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="25"><img src="img/134.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">03</p><h3 class="serif">Building the motifs</h3><p class="s-vn">Họa tiết</p><p class="s-d">The motifs became one family, drawn in lacquer red, ink and cream, then framed as square seals and tiles.</p></div><div class="s-art n4"><figure class="fig " data-i="26"><img src="img/032.webp" width="799" height="1800" loading="lazy" decoding="async" alt="Key illustrations"></figure><figure class="fig " data-i="27"><img src="img/136.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Illustrations, tiles and repeats"></figure><figure class="fig " data-i="28"><img src="img/035.webp" width="1276" height="1464" loading="lazy" decoding="async" alt="Minimal symbols"></figure><figure class="fig " data-i="29"><img src="img/038c.webp" width="848" height="1475" loading="lazy" decoding="async" alt="Base elements in frames"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">04</p><h3 class="serif">First patterns</h3><p class="s-vn">Hoa văn đầu tiên</p><p class="s-d">We cut the strongest pieces out of the boards and tested them as repeats on light and dark grounds.</p></div><div class="s-art n4"><figure class="fig " data-i="30"><img src="img/033.webp" width="1384" height="1680" loading="lazy" decoding="async" alt="Selected crop · lacquer lotus"></figure><figure class="fig " data-i="31"><img src="img/034.webp" width="1392" height="1096" loading="lazy" decoding="async" alt="Selected crop · cream lotus &amp; crane"></figure><figure class="fig " data-i="32"><img src="img/036.webp" width="1204" height="1624" loading="lazy" decoding="async" alt="Selected crop · lotus lattice"></figure><figure class="fig " data-i="33"><img src="img/039c.webp" width="1244" height="1507" loading="lazy" decoding="async" alt="Selected crop · koi &amp; symbols"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">05</p><h3 class="serif">Studies for the mark</h3><p class="s-vn">Biểu tượng</p><p class="s-d">Lotus, roof and flower studies led to the emblems, the seal and the script you will see below.</p></div><div class="s-art n2"><figure class="fig " data-i="34"><img src="img/047.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="35"><img src="img/046.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Pattern"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">06</p><h3 class="serif">A cooler palette</h3><p class="s-vn">Bảng màu lam</p><p class="s-d">We also tried indigo and gold, a blue-and-white porcelain mood, to see how far the motifs can travel.</p></div><div class="s-art n4"><figure class="fig " data-i="36"><img src="img/058.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="37"><img src="img/075.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Indigo crane repeat"></figure><figure class="fig " data-i="38"><img src="img/078.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="39"><img src="img/144.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Indigo motif sheet"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">07</p><h3 class="serif">Craft and finish</h3><p class="s-vn">Chất liệu</p><p class="s-d">Blind emboss, gold leaf and fine line work: the tactile layer that turns a pattern into a luxury object.</p></div><div class="s-art n3"><figure class="fig " data-i="40"><img src="img/053.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="41"><img src="img/083.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="42"><img src="img/066.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Pattern"></figure></div></article>
+<article class="step"><div class="s-txt"><p class="s-n">08</p><h3 class="serif">Systems</h3><p class="s-vn">Hệ thống</p><p class="s-d">Finally we turned it into systems: modular seal tiles and lattice connectors that work at any size.</p></div><div class="s-art n2"><figure class="fig " data-i="43"><img src="img/142c.webp" width="1043" height="811" loading="lazy" decoding="async" alt="Concept A · floral-geometric modules"></figure><figure class="fig " data-i="44"><img src="img/141c.webp" width="1086" height="897" loading="lazy" decoding="async" alt="Concept B · lattice &amp; seal modules"></figure></div></article>
+</div></div></section>
+<div class="words" aria-hidden="true"><div class="w1">Sen · Hạc · Hoa mai · Hạ Long · Mái đình · Tre · Mặt trời · Cá chép · Đèn lồng · Sen · Hạc · Hoa mai · Hạ Long · Mái đình · Tre · Mặt trời · Cá chép · Đèn lồng · Sen · Hạc · Hoa mai · Hạ Long · Mái đình · Tre · Mặt trời · Cá chép · Đèn lồng</div><div class="w2">Lotus · Crane · Apricot blossom · Karst bay · Pagoda roof · Bamboo · Red sun · Koi · Lantern · Lotus · Crane · Apricot blossom · Karst bay · Pagoda roof ·</div></div>
+<section class="sec library" id="library" data-nav="dark"><canvas class="petals" data-n="24" data-tone="dark"></canvas><div class="wrap">
+<div class="head"><p class="label rv">03 · Pattern library</p><h2 class="serif">From motif to <em>repeat</em></h2>
+<p class="lead rv">40 seamless patterns and key visuals, organised into three colour worlds. Each world below shows its own patterns next to its mock-ups. To see every pattern on one page, open Concept Patterns.</p></div></div>
+<div class="more-row"><a class="btn" href="#concept-patterns">Open Concept Patterns</a></div>
+<div class="wrap boxzone"><div class="rv"><p class="label">Turn the box</p><h3 class="serif">One flacon box, <em>six skins</em></h3>
+<p class="lead">Drag the box, or keep scrolling. Each face is wrapped in a different pattern, so you can see how each one feels on the actual product.</p>
+<ul class="faces"><li><button type="button"><i style="--c:#6A1222"></i>Lacquer</button></li><li><button type="button"><i style="--c:#C9A06A"></i>Silk painting</button></li><li><button type="button"><i style="--c:#1C3328"></i>Jade</button></li><li><button type="button"><i style="--c:#1F2F55"></i>Indigo</button></li><li><button type="button"><i style="--c:#EBD5C8"></i>Seal modules</button></li><li><button type="button"><i style="--c:#F6EEE2"></i>Ivory line</button></li></ul></div>
+<div class="stage" data-scroll="1" data-btns=".boxzone" data-speed="0.06" aria-label="Flacon box with six pattern skins. Drag to turn, tap a side to open its pattern."><div class="float"><div class="box "><div class="face front" data-i="45" style="background-image:url(img/132.webp)"><div class="band"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>VIETNAM NISH</b></div></div><div class="face right" data-i="46" style="background-image:url(img/070.webp)"></div><div class="face back" data-i="47" style="background-image:url(img/071.webp)"></div><div class="face left" data-i="48" style="background-image:url(img/075.webp)"></div><div class="face top" data-i="49" style="background-image:url(img/135.webp)"></div><div class="face bottom" data-i="50" style="background-image:url(img/072.webp)"></div></div></div><div class="shadow"></div></div></div></section>
+<section class="world light" id="ivory" style="--bg:#F4ECE0;--fg:#231815;--acc:#A3262F;--bga:rgba(244,236,224,0.86);--wall:url(img/072.webp)">
+<div class="sec w-intro" data-w="Ivory"><img class="fmotif" src="img/cut_plum.webp" width="784" height="408" alt="" loading="lazy" data-speed="0.16"><img class="fmotif f2" src="img/cut_crane.webp" width="562" height="556" alt="" loading="lazy" data-speed="0.32"><img class="fmotif f3" src="img/cut_lotus.webp" width="744" height="508" alt="" loading="lazy" data-speed="0.08">
+<div class="wrap"><div class="w-top"><div class="rv"><p class="w-num">04 · Colour world</p><h2 class="serif">Ivory</h2><p class="w-vn">Ngà · rice paper & vermilion ink</p>
+<p class="w-line">Cream and rice paper with vermilion ink, fine line drawings and soft painterly lotus. The quietest of the three worlds: calm and gallery-like, so the flacon leads.</p><ul class="pal"><li style="--s:#F6EEE2;--t:#231815">Ivory<small>#F6EEE2</small></li><li style="--s:#A3262F;--t:#F4EADC">Vermilion<small>#A3262F</small></li><li style="--s:#E9C8B8;--t:#231815">Blush<small>#E9C8B8</small></li><li style="--s:#5F6B4E;--t:#F4EADC">Celadon<small>#5F6B4E</small></li></ul><svg class="orn" viewBox="0 0 600 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><path pathLength="1" d="M0 20H250M350 20H600"/><path pathLength="1" d="M300 4 316 20 300 36 284 20Z"/><path pathLength="1" d="M300 11 309 20 300 29 291 20Z"/><path pathLength="1" d="M250 20c10-12 22-12 28 0M322 20c6-12 18-12 28 0M250 20c10 12 22 12 28 0M322 20c6 12 18 12 28 0"/><path pathLength="1" d="M60 20l6-6 6 6-6 6zM528 20l6-6 6 6-6 6z"/></g></svg></div>
+<div class="w-hero"><figure class="fig " data-i="51"><img src="img/090.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><span class="w-ring"></span><div class="w-box"><div class="stage" data-speed="0.18" data-start="-20" aria-label="Ivory flacon box. Drag to turn, tap a side to open its pattern."><div class="float"><div class="box sm"><div class="face front" data-i="52" style="background-image:url(img/088.webp)"><div class="band"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>VIETNAM NISH</b></div></div><div class="face right" data-i="53" style="background-image:url(img/072.webp)"></div><div class="face back" data-i="54" style="background-image:url(img/090.webp)"></div><div class="face left" data-i="55" style="background-image:url(img/076.webp)"></div><div class="face top" data-i="56" style="background-image:url(img/135.webp)"></div><div class="face bottom" data-i="57" style="background-image:url(img/119.webp)"></div></div></div><div class="shadow"></div></div></div></div></div></div></div>
+<nav class="wnav" aria-label="Ivory sections"><div class="wrap wnav-in"><span class="wn-t"><i></i>Ivory</span><a class="wn-l" href="#ivory-patterns">Patterns<small>23</small></a><a class="wn-l" href="#ivory-mockups">Mock-ups<small>19</small></a><a class="wn-l" href="#ivory-details">Details<small>08</small></a><a class="wn-l" href="#ivory-boards">Boards<small>08</small></a><span class="wn-sw"><a href="#ivory" class="cur-w" aria-label="Ivory world"><i style="--c:#F4ECE0"></i><span>Ivory</span></a><a href="#lacquer" class="" aria-label="Lacquer world"><i style="--c:#4A0B16"></i><span>Lacquer</span></a><a href="#jade" class="" aria-label="Jade world"><i style="--c:#12231A"></i><span>Jade</span></a></span></div></nav>
+<div class="w-pat w-anchor" id="ivory-patterns"><div class="wrap"><div class="w-sub rv"><h3>The <em>patterns</em></h3><p>Every repeat in the Ivory world. Drag to browse, click to open.</p></div></div><div class="car lg"><figure class="fig " data-i="58"><img src="img/072.webp" width="1185" height="1327" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="59"><img src="img/076.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="60"><img src="img/088.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="61"><img src="img/089.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="62"><img src="img/119.webp" width="1199" height="1312" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="63"><img src="img/074.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="64"><img src="img/087.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="65"><img src="img/111.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="66"><img src="img/112.webp" width="1254" height="1254" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="67"><img src="img/133.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="68"><img src="img/135.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Modular seal repeat"></figure><figure class="fig " data-i="69"><img src="img/139.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="70"><img src="img/138.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="71"><img src="img/069.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="72"><img src="img/097.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="73"><img src="img/057.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="74"><img src="img/092.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="75"><img src="img/094.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="76"><img src="img/120.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="77"><img src="img/086.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="78"><img src="img/084.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="79"><img src="img/091.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="80"><img src="img/080.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure></div></div>
+<div class="wall w-block w-anchor" id="ivory-mockups"><canvas class="petals" data-n="16" data-tone="light"></canvas><div class="wrap"><div class="w-sub rv"><h3>The <em>mock-ups</em></h3><p>Packaging, bags, uniforms, the website and the boutique, all in the Ivory palette.</p></div><div class="stack">
+<figure class="card fig" data-i="81" style="--i:0;--ar:1.7606;--cw:1290px"><img src="img/107_hero.webp" width="956" height="543" alt="Packaging set" loading="lazy"><figcaption><span class="ct">Packaging set</span><span class="cn">01 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="82" style="--i:1;--ar:1.7916;--cw:1613px"><img src="img/105_hero.webp" width="1195" height="667" alt="Packaging set" loading="lazy"><figcaption><span class="ct">Packaging set</span><span class="cn">02 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="83" style="--i:2;--ar:1.3257;--cw:1098px"><img src="img/108_hero.webp" width="814" height="614" alt="Packaging set" loading="lazy"><figcaption><span class="ct">Packaging set</span><span class="cn">03 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="84" style="--i:3;--ar:1.9412;--cw:1024px"><img src="img/055_pack.webp" width="759" height="391" alt="Packaging" loading="lazy"><figcaption><span class="ct">Packaging</span><span class="cn">04 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="85" style="--i:4;--ar:1.3629;--cw:664px"><img src="img/065_bag.webp" width="492" height="361" alt="Shopping bag" loading="lazy"><figcaption><span class="ct">Shopping bag</span><span class="cn">05 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="86" style="--i:5;--ar:0.7332;--cw:441px"><img src="img/107_uni.webp" width="327" height="446" alt="Staff uniform" loading="lazy"><figcaption><span class="ct">Staff uniform</span><span class="cn">06 / 06</span></figcaption></figure>
+</div></div></div>
+<div class="w-block"><div class="row rv"><div class="row-h"><h3>More mock-ups<small>13</small></h3><div class="arrows"><button type="button" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="car "><figure class="fig " data-i="87"><img src="img/107_bag.webp" width="318" height="533" loading="lazy" decoding="async" alt="Shopping bag"><figcaption>Shopping bag</figcaption></figure><figure class="fig " data-i="88"><img src="img/107_tissue.webp" width="316" height="446" loading="lazy" decoding="async" alt="Tissue wrap"><figcaption>Tissue wrap</figcaption></figure><figure class="fig " data-i="89"><img src="img/107_web.webp" width="470" height="446" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="90"><img src="img/105_uni.webp" width="477" height="402" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="91"><img src="img/105_web.webp" width="748" height="402" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="92"><img src="img/108_web.webp" width="599" height="450" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="93"><img src="img/108_uni.webp" width="345" height="614" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="94"><img src="img/103_pack.webp" width="827" height="460" loading="lazy" decoding="async" alt="Packaging"><figcaption>Packaging</figcaption></figure><figure class="fig " data-i="95"><img src="img/103_uni.webp" width="377" height="288" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="96"><img src="img/103_web.webp" width="681" height="326" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="97"><img src="img/055_store.webp" width="772" height="391" loading="lazy" decoding="async" alt="The boutique"><figcaption>The boutique</figcaption></figure><figure class="fig " data-i="98"><img src="img/055_gift.webp" width="337" height="303" loading="lazy" decoding="async" alt="Gift box"><figcaption>Gift box</figcaption></figure><figure class="fig " data-i="99"><img src="img/065_store.webp" width="610" height="440" loading="lazy" decoding="async" alt="The boutique"><figcaption>The boutique</figcaption></figure></div></div></div>
+<div class="sec w-anchor" id="ivory-details"><div class="wrap"><div class="w-sub rv"><h3>The <em>details</em></h3><p>Up close: wax seals, foil, velvet, emboss and the finest line work. Open any detail to zoom in.</p></div><div class="details"><figure class="fig rv" data-i="100" style="--cw:591px"><img src="img/det_ivory_01.webp" width="455" height="455" loading="lazy" decoding="async" alt="Velvet spine and bottle label"><figcaption>Velvet spine and bottle label</figcaption></figure><figure class="fig rv" data-i="101" style="--cw:572px"><img src="img/det_ivory_02.webp" width="440" height="440" loading="lazy" decoding="async" alt="Gold-foil koi on velvet band"><figcaption>Gold-foil koi on velvet band</figcaption></figure><figure class="fig rv" data-i="102" style="--cw:598px"><img src="img/det_ivory_03.webp" width="460" height="420" loading="lazy" decoding="async" alt="Koi box with velvet sleeve"><figcaption>Koi box with velvet sleeve</figcaption></figure><figure class="fig rv" data-i="103" style="--cw:546px"><img src="img/det_ivory_04.webp" width="420" height="480" loading="lazy" decoding="async" alt="Lotus box and bottle label"><figcaption>Lotus box and bottle label</figcaption></figure><figure class="fig rv" data-i="104" style="--cw:572px"><img src="img/det_ivory_05.webp" width="440" height="550" loading="lazy" decoding="async" alt="Embossed lotus on cream paper"><figcaption>Embossed lotus on cream paper</figcaption></figure><figure class="fig rv" data-i="105" style="--cw:624px"><img src="img/det_ivory_06.webp" width="480" height="480" loading="lazy" decoding="async" alt="Blind-embossed pagoda and lotus"><figcaption>Blind-embossed pagoda and lotus</figcaption></figure><figure class="fig rv" data-i="106" style="--cw:624px"><img src="img/det_ivory_07.webp" width="480" height="480" loading="lazy" decoding="async" alt="Embossed blossom sprig and lotus"><figcaption>Embossed blossom sprig and lotus</figcaption></figure><figure class="fig rv" data-i="107" style="--cw:572px"><img src="img/det_ivory_09.webp" width="440" height="432" loading="lazy" decoding="async" alt="Crane mural in boutique"><figcaption>Crane mural in boutique</figcaption></figure></div></div>
+<div class="w-block w-anchor" id="ivory-boards"><div class="row rv"><div class="row-h"><h3>Complete boards<small>08</small></h3><div class="arrows"><button type="button" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="car lg"><figure class="fig " data-i="108"><img src="img/107.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="109"><img src="img/105.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="110"><img src="img/108.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="111"><img src="img/103.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="112"><img src="img/065.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Ivory moodboard"></figure><figure class="fig " data-i="113"><img src="img/067.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Lacquer moodboard"></figure><figure class="fig " data-i="114"><img src="img/146.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Identity sheet · marks and monogram"></figure><figure class="fig " data-i="115"><img src="img/055.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Indigo moodboard"></figure></div></div></div></div></section>
+<section class="world dark" id="lacquer" style="--bg:#4A0B16;--fg:#F4E8DA;--acc:#E0C28C;--bga:rgba(74,11,22,0.9);--wall:url(img/140.webp)" data-nav="dark">
+<div class="sec w-intro" data-w="Lacquer"><img class="fmotif" src="img/cut_lotus.webp" width="744" height="508" alt="" loading="lazy" data-speed="0.16"><img class="fmotif f2" src="img/cut_sun.webp" width="748" height="380" alt="" loading="lazy" data-speed="0.32"><img class="fmotif f3" src="img/cut_crane.webp" width="562" height="556" alt="" loading="lazy" data-speed="0.08">
+<div class="wrap"><div class="w-top"><div class="rv"><p class="w-num">05 · Colour world</p><h2 class="serif">Lacquer</h2><p class="w-vn">Sơn mài · cinnabar & gold leaf</p>
+<p class="w-line">Deep cinnabar lacquer with gold leaf and cream silhouettes. The boldest world: rich, festive and unmistakable on a shelf, at its best on velvet, foil and wax.</p><ul class="pal"><li style="--s:#6A1222;--t:#F4EADC">Lacquer<small>#6A1222</small></li><li style="--s:#C9A06A;--t:#231815">Gold leaf<small>#C9A06A</small></li><li style="--s:#F2E4D3;--t:#231815">Rice paper<small>#F2E4D3</small></li><li style="--s:#2B1A17;--t:#F4EADC">Ink<small>#2B1A17</small></li></ul><svg class="orn" viewBox="0 0 600 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><path pathLength="1" d="M0 20H250M350 20H600"/><path pathLength="1" d="M300 4 316 20 300 36 284 20Z"/><path pathLength="1" d="M300 11 309 20 300 29 291 20Z"/><path pathLength="1" d="M250 20c10-12 22-12 28 0M322 20c6-12 18-12 28 0M250 20c10 12 22 12 28 0M322 20c6 12 18 12 28 0"/><path pathLength="1" d="M60 20l6-6 6 6-6 6zM528 20l6-6 6 6-6 6z"/></g></svg></div>
+<div class="w-hero"><figure class="fig " data-i="116"><img src="img/132.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Lacquer lotus repeat"></figure><span class="w-ring"></span><div class="w-box"><div class="stage" data-speed="0.18" data-start="-20" aria-label="Lacquer flacon box. Drag to turn, tap a side to open its pattern."><div class="float"><div class="box sm"><div class="face front" data-i="117" style="background-image:url(img/132.webp)"><div class="band"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>VIETNAM NISH</b></div></div><div class="face right" data-i="118" style="background-image:url(img/068.webp)"></div><div class="face back" data-i="119" style="background-image:url(img/140.webp)"></div><div class="face left" data-i="120" style="background-image:url(img/081.webp)"></div><div class="face top" data-i="121" style="background-image:url(img/070.webp)"></div><div class="face bottom" data-i="122" style="background-image:url(img/145.webp)"></div></div></div><div class="shadow"></div></div></div></div></div></div></div>
+<nav class="wnav" aria-label="Lacquer sections"><div class="wrap wnav-in"><span class="wn-t"><i></i>Lacquer</span><a class="wn-l" href="#lacquer-patterns">Patterns<small>06</small></a><a class="wn-l" href="#lacquer-mockups">Mock-ups<small>31</small></a><a class="wn-l" href="#lacquer-details">Details<small>13</small></a><a class="wn-l" href="#lacquer-boards">Boards<small>08</small></a><span class="wn-sw"><a href="#ivory" class="" aria-label="Ivory world"><i style="--c:#F4ECE0"></i><span>Ivory</span></a><a href="#lacquer" class="cur-w" aria-label="Lacquer world"><i style="--c:#4A0B16"></i><span>Lacquer</span></a><a href="#jade" class="" aria-label="Jade world"><i style="--c:#12231A"></i><span>Jade</span></a></span></div></nav>
+<div class="w-pat w-anchor" id="lacquer-patterns"><div class="wrap"><div class="w-sub rv"><h3>The <em>patterns</em></h3><p>Every repeat in the Lacquer world. Drag to browse, click to open.</p></div></div><div class="car lg"><figure class="fig " data-i="123"><img src="img/140.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="124"><img src="img/081.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="125"><img src="img/145.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="126"><img src="img/118.webp" width="1086" height="1448" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="127"><img src="img/068.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="128"><img src="img/070.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Silk-painting lotus"></figure></div></div>
+<div class="wall w-block w-anchor" id="lacquer-mockups"><canvas class="petals" data-n="16" data-tone="dark"></canvas><div class="wrap"><div class="w-sub rv"><h3>The <em>mock-ups</em></h3><p>Packaging, bags, uniforms, the website and the boutique, all in the Lacquer palette.</p></div><div class="stack">
+<figure class="card fig" data-i="129" style="--i:0;--ar:2.4469;--cw:1618px"><img src="img/059_pack.webp" width="1199" height="490" alt="Packaging" loading="lazy"><figcaption><span class="ct">Packaging</span><span class="cn">01 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="130" style="--i:1;--ar:0.9107;--cw:481px"><img src="img/063_bag.webp" width="357" height="392" alt="Shopping bag" loading="lazy"><figcaption><span class="ct">Shopping bag</span><span class="cn">02 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="131" style="--i:2;--ar:0.8858;--cw:680px"><img src="img/062_uni.webp" width="504" height="569" alt="Staff uniform" loading="lazy"><figcaption><span class="ct">Staff uniform</span><span class="cn">03 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="132" style="--i:3;--ar:1.9414;--cw:1564px"><img src="img/104_pack.webp" width="1159" height="597" alt="Packaging" loading="lazy"><figcaption><span class="ct">Packaging</span><span class="cn">04 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="133" style="--i:4;--ar:1.5865;--cw:1336px"><img src="img/061_web.webp" width="990" height="624" alt="Website" loading="lazy"><figcaption><span class="ct">Website</span><span class="cn">05 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="134" style="--i:5;--ar:1.1544;--cw:696px"><img src="img/063_gift.webp" width="516" height="447" alt="Gift box" loading="lazy"><figcaption><span class="ct">Gift box</span><span class="cn">06 / 06</span></figcaption></figure>
+</div></div></div>
+<div class="w-block"><div class="row rv"><div class="row-h"><h3>More mock-ups<small>25</small></h3><div class="arrows"><button type="button" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="car "><figure class="fig " data-i="135"><img src="img/106_pack.webp" width="1159" height="614" loading="lazy" decoding="async" alt="Packaging"><figcaption>Packaging</figcaption></figure><figure class="fig " data-i="136"><img src="img/063_uni.webp" width="461" height="392" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="137"><img src="img/106_uni.webp" width="333" height="465" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="138"><img src="img/106_web.webp" width="464" height="465" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="139"><img src="img/062_gift.webp" width="562" height="486" loading="lazy" decoding="async" alt="Gift box"><figcaption>Gift box</figcaption></figure><figure class="fig " data-i="140"><img src="img/062_bag.webp" width="544" height="354" loading="lazy" decoding="async" alt="Shopping bag"><figcaption>Shopping bag</figcaption></figure><figure class="fig " data-i="141"><img src="img/063_candle.webp" width="284" height="267" loading="lazy" decoding="async" alt="Scented candle"><figcaption>Scented candle</figcaption></figure><figure class="fig " data-i="142"><img src="img/059_uni.webp" width="400" height="370" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="143"><img src="img/059_web.webp" width="451" height="370" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="144"><img src="img/059_wrap.webp" width="1199" height="328" loading="lazy" decoding="async" alt="Ribbon, seal &amp; tag"><figcaption>Ribbon, seal &amp; tag</figcaption></figure><figure class="fig " data-i="145"><img src="img/061_uni.webp" width="537" height="624" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="146"><img src="img/061_pack.webp" width="1536" height="395" loading="lazy" decoding="async" alt="Packaging"><figcaption>Packaging</figcaption></figure><figure class="fig " data-i="147"><img src="img/104_velvet.webp" width="651" height="511" loading="lazy" decoding="async" alt="Velvet band"><figcaption>Velvet band</figcaption></figure><figure class="fig " data-i="148"><img src="img/108_velvet.webp" width="551" height="450" loading="lazy" decoding="async" alt="Velvet band"><figcaption>Velvet band</figcaption></figure><figure class="fig " data-i="149"><img src="img/109_hero.webp" width="1179" height="488" loading="lazy" decoding="async" alt="Packaging set"><figcaption>Packaging set</figcaption></figure><figure class="fig " data-i="150"><img src="img/109_uni.webp" width="498" height="370" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="151"><img src="img/109_web.webp" width="667" height="370" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="152"><img src="img/110_pack.webp" width="1130" height="608" loading="lazy" decoding="async" alt="Packaging"><figcaption>Packaging</figcaption></figure><figure class="fig " data-i="153"><img src="img/110_uni.webp" width="402" height="457" loading="lazy" decoding="async" alt="Staff uniform"><figcaption>Staff uniform</figcaption></figure><figure class="fig " data-i="154"><img src="img/110_tactile.webp" width="306" height="457" loading="lazy" decoding="async" alt="Tactile detail"><figcaption>Tactile detail</figcaption></figure><figure class="fig " data-i="155"><img src="img/110_web.webp" width="449" height="457" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="156"><img src="img/103_band.webp" width="585" height="288" loading="lazy" decoding="async" alt="Velvet band"><figcaption>Velvet band</figcaption></figure><figure class="fig " data-i="157"><img src="img/059_bag.webp" width="333" height="370" loading="lazy" decoding="async" alt="Shopping bag"><figcaption>Shopping bag</figcaption></figure><figure class="fig " data-i="158"><img src="img/062_web.webp" width="534" height="286" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure><figure class="fig " data-i="159"><img src="img/063_web.webp" width="550" height="358" loading="lazy" decoding="async" alt="Website"><figcaption>Website</figcaption></figure></div></div></div>
+<div class="sec w-anchor" id="lacquer-details"><div class="wrap"><div class="w-sub rv"><h3>The <em>details</em></h3><p>Up close: wax seals, foil, velvet, emboss and the finest line work. Open any detail to zoom in.</p></div><div class="details"><figure class="fig rv" data-i="160" style="--cw:566px"><img src="img/det_lacquer_01.webp" width="436" height="499" loading="lazy" decoding="async" alt="Lotus wax seal on koi wrap"><figcaption>Lotus wax seal on koi wrap</figcaption></figure><figure class="fig rv" data-i="161" style="--cw:585px"><img src="img/det_lacquer_02.webp" width="450" height="464" loading="lazy" decoding="async" alt="Gold-foil lotus on velvet band"><figcaption>Gold-foil lotus on velvet band</figcaption></figure><figure class="fig rv" data-i="162" style="--cw:1235px"><img src="img/det_lacquer_03.webp" width="950" height="630" loading="lazy" decoding="async" alt="Gold script among painted lotus"><figcaption>Gold script among painted lotus</figcaption></figure><figure class="fig rv" data-i="163" style="--cw:603px"><img src="img/det_lacquer_04.webp" width="464" height="440" loading="lazy" decoding="async" alt="Painted lotus with gold stamens"><figcaption>Painted lotus with gold stamens</figcaption></figure><figure class="fig rv" data-i="164" style="--cw:572px"><img src="img/det_lacquer_05.webp" width="440" height="440" loading="lazy" decoding="async" alt="Velvet bow and embossed tag"><figcaption>Velvet bow and embossed tag</figcaption></figure><figure class="fig rv" data-i="165" style="--cw:546px"><img src="img/det_lacquer_06.webp" width="420" height="420" loading="lazy" decoding="async" alt="Wax-sealed lotus gift box"><figcaption>Wax-sealed lotus gift box</figcaption></figure><figure class="fig rv" data-i="166" style="--cw:663px"><img src="img/det_lacquer_07.webp" width="510" height="430" loading="lazy" decoding="async" alt="Crane in flight, gold accents"><figcaption>Crane in flight, gold accents</figcaption></figure><figure class="fig rv" data-i="167" style="--cw:611px"><img src="img/det_lacquer_08.webp" width="470" height="440" loading="lazy" decoding="async" alt="Watercolour lotus seed pod"><figcaption>Watercolour lotus seed pod</figcaption></figure><figure class="fig rv" data-i="168" style="--cw:575px"><img src="img/det_lacquer_09.webp" width="443" height="485" loading="lazy" decoding="async" alt="Bottle and box label typography"><figcaption>Bottle and box label typography</figcaption></figure><figure class="fig rv" data-i="169" style="--cw:621px"><img src="img/det_lacquer_10.webp" width="478" height="430" loading="lazy" decoding="async" alt="Velvet band with foil icons"><figcaption>Velvet band with foil icons</figcaption></figure><figure class="fig rv" data-i="170" style="--cw:637px"><img src="img/det_lacquer_11.webp" width="490" height="480" loading="lazy" decoding="async" alt="Lotus emblem linework"><figcaption>Lotus emblem linework</figcaption></figure><figure class="fig rv" data-i="171" style="--cw:565px"><img src="img/det_lacquer_12.webp" width="435" height="430" loading="lazy" decoding="async" alt="Gold-foil lotus shopping bag"><figcaption>Gold-foil lotus shopping bag</figcaption></figure><figure class="fig rv" data-i="172" style="--cw:585px"><img src="img/det_lacquer_13.webp" width="450" height="460" loading="lazy" decoding="async" alt="Script wordmark with blossoms"><figcaption>Script wordmark with blossoms</figcaption></figure></div></div>
+<div class="w-block w-anchor" id="lacquer-boards"><div class="row rv"><div class="row-h"><h3>Complete boards<small>08</small></h3><div class="arrows"><button type="button" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="car lg"><figure class="fig " data-i="173"><img src="img/059.webp" width="1199" height="1312" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="174"><img src="img/061.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="175"><img src="img/062.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="176"><img src="img/063.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="177"><img src="img/104.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="178"><img src="img/106.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="179"><img src="img/109.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="180"><img src="img/110.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Pattern"></figure></div></div></div></div></section>
+<section class="world dark" id="jade" style="--bg:#12231A;--fg:#F1E7D6;--acc:#E0C28C;--bga:rgba(18,35,26,0.9);--wall:url(img/085.webp)" data-nav="dark">
+<div class="sec w-intro" data-w="Jade"><img class="fmotif" src="img/cut_bamboo.webp" width="568" height="420" alt="" loading="lazy" data-speed="0.16"><img class="fmotif f2" src="img/cut_crane.webp" width="562" height="556" alt="" loading="lazy" data-speed="0.32"><img class="fmotif f3" src="img/cut_lotus.webp" width="744" height="508" alt="" loading="lazy" data-speed="0.08">
+<div class="wrap"><div class="w-top"><div class="rv"><p class="w-num">06 · Colour world</p><h2 class="serif">Jade</h2><p class="w-vn">Ngọc bích · jade & gold foil</p>
+<p class="w-line">Deep jade and forest green with gold foil, or ivory with green leaves. Calm and nocturnal, the natural choice for a limited edition or a VIP line.</p><ul class="pal"><li style="--s:#1C3328;--t:#F4EADC">Jade<small>#1C3328</small></li><li style="--s:#C9A45C;--t:#231815">Gold foil<small>#C9A45C</small></li><li style="--s:#F1E7D6;--t:#231815">Ivory<small>#F1E7D6</small></li><li style="--s:#5F6B4E;--t:#F4EADC">Lotus leaf<small>#5F6B4E</small></li></ul><svg class="orn" viewBox="0 0 600 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><path pathLength="1" d="M0 20H250M350 20H600"/><path pathLength="1" d="M300 4 316 20 300 36 284 20Z"/><path pathLength="1" d="M300 11 309 20 300 29 291 20Z"/><path pathLength="1" d="M250 20c10-12 22-12 28 0M322 20c6-12 18-12 28 0M250 20c10 12 22 12 28 0M322 20c6 12 18 12 28 0"/><path pathLength="1" d="M60 20l6-6 6 6-6 6zM528 20l6-6 6 6-6 6z"/></g></svg></div>
+<div class="w-hero"><figure class="fig " data-i="181"><img src="img/071.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Jade lotus repeat"></figure><span class="w-ring"></span><div class="w-box"><div class="stage" data-speed="0.18" data-start="-20" aria-label="Jade flacon box. Drag to turn, tap a side to open its pattern."><div class="float"><div class="box sm"><div class="face front" data-i="182" style="background-image:url(img/071.webp)"><div class="band"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M16 3 29 16 16 29 3 16Z"/><path d="M16 9c3 3 3 9 0 14-3-5-3-11 0-14Z"/><path d="M9 16c4-1 6 1 7 7M23 16c-4-1-6 1-7 7"/></g></svg><b>VIETNAM NISH</b></div></div><div class="face right" data-i="183" style="background-image:url(img/073.webp)"></div><div class="face back" data-i="184" style="background-image:url(img/085.webp)"></div><div class="face left" data-i="185" style="background-image:url(img/054.webp)"></div><div class="face top" data-i="186" style="background-image:url(img/093.webp)"></div><div class="face bottom" data-i="187" style="background-image:url(img/066.webp)"></div></div></div><div class="shadow"></div></div></div></div></div></div></div>
+<nav class="wnav" aria-label="Jade sections"><div class="wrap wnav-in"><span class="wn-t"><i></i>Jade</span><a class="wn-l" href="#jade-patterns">Patterns<small>04</small></a><a class="wn-l" href="#jade-mockups">Mock-ups<small>06</small></a><a class="wn-l" href="#jade-details">Details<small>12</small></a><a class="wn-l" href="#jade-boards">Boards<small>03</small></a><span class="wn-sw"><a href="#ivory" class="" aria-label="Ivory world"><i style="--c:#F4ECE0"></i><span>Ivory</span></a><a href="#lacquer" class="" aria-label="Lacquer world"><i style="--c:#4A0B16"></i><span>Lacquer</span></a><a href="#jade" class="cur-w" aria-label="Jade world"><i style="--c:#12231A"></i><span>Jade</span></a></span></div></nav>
+<div class="w-pat w-anchor" id="jade-patterns"><div class="wrap"><div class="w-sub rv"><h3>The <em>patterns</em></h3><p>Every repeat in the Jade world. Drag to browse, click to open.</p></div></div><div class="car lg"><figure class="fig " data-i="188"><img src="img/073.webp" width="1055" height="1491" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="189"><img src="img/085.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="190"><img src="img/054.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure><figure class="fig " data-i="191"><img src="img/093.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Pattern"></figure></div></div>
+<div class="wall w-block w-anchor" id="jade-mockups"><canvas class="petals" data-n="16" data-tone="gold"></canvas><div class="wrap"><div class="w-sub rv"><h3>The <em>mock-ups</em></h3><p>Packaging, bags, uniforms, the website and the boutique, all in the Jade palette.</p></div><div class="stack">
+<figure class="card fig" data-i="192" style="--i:0;--ar:1.8232;--cw:807px"><img src="img/095_box.webp" width="598" height="328" alt="Gift box" loading="lazy"><figcaption><span class="ct">Gift box</span><span class="cn">01 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="193" style="--i:1;--ar:1.0430;--cw:589px"><img src="img/095_uni.webp" width="437" height="419" alt="Staff uniform" loading="lazy"><figcaption><span class="ct">Staff uniform</span><span class="cn">02 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="194" style="--i:2;--ar:1.1885;--cw:672px"><img src="img/095_web.webp" width="498" height="419" alt="Website" loading="lazy"><figcaption><span class="ct">Website</span><span class="cn">03 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="195" style="--i:3;--ar:1.9928;--cw:1127px"><img src="img/003_store.webp" width="835" height="419" alt="The boutique" loading="lazy"><figcaption><span class="ct">The boutique</span><span class="cn">04 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="196" style="--i:4;--ar:1.4487;--cw:762px"><img src="img/003_bottle.webp" width="565" height="390" alt="Flacon &amp; box" loading="lazy"><figcaption><span class="ct">Flacon &amp; box</span><span class="cn">05 / 06</span></figcaption></figure>
+<figure class="card fig" data-i="197" style="--i:5;--ar:1.1821;--cw:622px"><img src="img/003_bag.webp" width="461" height="390" alt="Shopping bag" loading="lazy"><figcaption><span class="ct">Shopping bag</span><span class="cn">06 / 06</span></figcaption></figure>
+</div></div></div>
+<div class="sec w-anchor" id="jade-details"><div class="wrap"><div class="w-sub rv"><h3>The <em>details</em></h3><p>Up close: wax seals, foil, velvet, emboss and the finest line work. Open any detail to zoom in.</p></div><div class="details"><figure class="fig rv" data-i="198" style="--cw:845px"><img src="img/det_jade_01.webp" width="650" height="812" loading="lazy" decoding="async" alt="Red-crowned crane in gold leaf"><figcaption>Red-crowned crane in gold leaf</figcaption></figure><figure class="fig rv" data-i="199" style="--cw:650px"><img src="img/det_jade_02.webp" width="500" height="430" loading="lazy" decoding="async" alt="Gilded fan with plum blossoms"><figcaption>Gilded fan with plum blossoms</figcaption></figure><figure class="fig rv" data-i="200" style="--cw:689px"><img src="img/det_jade_03.webp" width="530" height="430" loading="lazy" decoding="async" alt="Gold lotus and silk ribbon"><figcaption>Gold lotus and silk ribbon</figcaption></figure><figure class="fig rv" data-i="201" style="--cw:638px"><img src="img/det_jade_04.webp" width="491" height="389" loading="lazy" decoding="async" alt="Ivory and jade lotus cards"><figcaption>Ivory and jade lotus cards</figcaption></figure><figure class="fig rv" data-i="202" style="--cw:566px"><img src="img/det_jade_05.webp" width="436" height="418" loading="lazy" decoding="async" alt="Boutique moon-pavilion lotus mural"><figcaption>Boutique moon-pavilion lotus mural</figcaption></figure><figure class="fig rv" data-i="203" style="--cw:624px"><img src="img/det_jade_06.webp" width="480" height="600" loading="lazy" decoding="async" alt="Gold koi on jade paper"><figcaption>Gold koi on jade paper</figcaption></figure><figure class="fig rv" data-i="204" style="--cw:572px"><img src="img/det_jade_07.webp" width="440" height="550" loading="lazy" decoding="async" alt="Gilt lotus, crane and pavilion"><figcaption>Gilt lotus, crane and pavilion</figcaption></figure><figure class="fig rv" data-i="205" style="--cw:728px"><img src="img/det_jade_08.webp" width="560" height="560" loading="lazy" decoding="async" alt="Ivory lotus on jade leaves"><figcaption>Ivory lotus on jade leaves</figcaption></figure><figure class="fig rv" data-i="206" style="--cw:481px"><img src="img/det_jade_09.webp" width="370" height="370" loading="lazy" decoding="async" alt="Ivory bag, jade ribbon handle"><figcaption>Ivory bag, jade ribbon handle</figcaption></figure><figure class="fig rv" data-i="207" style="--cw:1092px"><img src="img/det_jade_10.webp" width="840" height="536" loading="lazy" decoding="async" alt="Vietnam Nish Parfume calligraphy"><figcaption>Vietnam Nish Parfume calligraphy</figcaption></figure><figure class="fig rv" data-i="208" style="--cw:624px"><img src="img/det_jade_11.webp" width="480" height="600" loading="lazy" decoding="async" alt="Blush lotus on deep jade"><figcaption>Blush lotus on deep jade</figcaption></figure><figure class="fig rv" data-i="209" style="--cw:702px"><img src="img/det_jade_13.webp" width="540" height="540" loading="lazy" decoding="async" alt="Lotus and crane on ivory"><figcaption>Lotus and crane on ivory</figcaption></figure></div></div>
+<div class="w-block w-anchor" id="jade-boards"><div class="row rv"><div class="row-h"><h3>Complete boards<small>03</small></h3><div class="arrows"><button type="button" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="car lg"><figure class="fig " data-i="210"><img src="img/095.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Jade moodboard"></figure><figure class="fig " data-i="211"><img src="img/143.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Jade identity sheet"></figure><figure class="fig " data-i="212"><img src="img/003.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Jade &amp; ivory moodboard"></figure></div></div></div></div></section>
+<section class="sec close" id="next"><div class="wrap close-in">
+<img class="close-lotus" src="img/cut_lotus.webp" width="744" height="508" alt="" loading="lazy">
+<p class="label">Next step</p><h2 class="serif">Which scent of Vietnam is <em>yours?</em></h2>
+<p class="lead">Choose one world, or a pair: Ivory or Lacquer for every day, Jade for a limited edition. We will then refine the mark, finalise the pattern set and prepare production files for packaging, bags, uniforms and the boutique.</p>
+<div class="worlds3"><a class="w3" href="#ivory" style="--c:#F4ECE0;--t:#231815;--wall:url(img/072.webp)"><small>04 · World</small><b>Ivory</b><i>Ngà · rice paper & vermilion ink</i></a><a class="w3" href="#lacquer" style="--c:#4A0B16;--t:#F4E8DA;--wall:url(img/140.webp)"><small>05 · World</small><b>Lacquer</b><i>Sơn mài · cinnabar & gold leaf</i></a><a class="w3" href="#jade" style="--c:#12231A;--t:#F1E7D6;--wall:url(img/085.webp)"><small>06 · World</small><b>Jade</b><i>Ngọc bích · jade & gold foil</i></a></div>
+<p class="thanks">Cảm ơn, Lanh.</p><div class="sigwrite"><p class="sig"><small>Design Concept by</small>Liudmila Mamula</p><div class="sig-rule"></div></div>
+</div><footer>Vietnam Nish Parfume · Brand identity exploration · November 2026</footer></section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lb-top"><span id="lbCount"></span><div class="lb-tools"><button type="button" class="cl" aria-label="Close viewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div>
+  <div class="lb-view" id="lbView"><img id="lbImg" alt=""></div>
+  <div class="lb-bot"><span id="lbCap"></span><span>Tap the image to zoom · swipe or ← → to browse</span></div>
+  <div class="lb-strip" id="lbStrip"></div>
+  <button type="button" class="pv" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button type="button" class="nx" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
+<script>
+(function(){
+const SEQ=[["132",1055,1491,"Lacquer · on the flacon box"],["072",1185,1327,"Ivory line · on the flacon box"],["071",1055,1491,"Jade · on the flacon box"],["070",1024,1536,"Silk painting · on the flacon box"],["135",1055,1491,"Seal modules · on the flacon box"],["075",1055,1491,"Indigo · on the flacon box"],["cut_lotus",744,508,"Nature · Lotus, crane, apricot blossom and bamboo are living symbols, drawn with one fine ink line."],["cut_roof",528,580,"Architecture · Pagoda roofs, lattice screens and seal frames give the system its geometry."],["cut_mount",804,348,"Landscape · Ha Long’s karst peaks and the red sun bring horizon, air and calm."],["cut_lotus",744,508,"Sen · Lotus"],["cut_crane",562,556,"Hạc · Crane"],["cut_mount",804,348,"Hạ Long · Karst bay"],["cut_roof",528,580,"Mái đình · Pagoda roof"],["cut_plum",784,408,"Hoa mai · Apricot blossom"],["cut_sun",748,380,"Mặt trời · Red sun"],["cut_bamboo",568,420,"Tre · Bamboo"],["043",1536,1024,"Gold emblem · lotus &amp; incense"],["045",1536,1024,"Emblem · crane &amp; red sun"],["044",1536,1024,"Lacquer emblem · lotus &amp; waves"],["041",1536,1024,"Wordmark · lotus flourish"],["042",1536,1024,"Script wordmark · four treatments"],["023",735,482,"Reference · auspicious symbols"],["024",736,736,"Reference · seal characters"],["028",736,1104,"Reference · floral shapes"],["137",1448,1086,"Pattern"],["134",1448,1086,"Pattern"],["032",799,1800,"Key illustrations"],["136",1448,1086,"Illustrations, tiles and repeats"],["035",1276,1464,"Minimal symbols"],["038c",848,1475,"Base elements in frames"],["033",1384,1680,"Selected crop · lacquer lotus"],["034",1392,1096,"Selected crop · cream lotus &amp; crane"],["036",1204,1624,"Selected crop · lotus lattice"],["039c",1244,1507,"Selected crop · koi &amp; symbols"],["047",1086,1448,"Pattern"],["046",1536,1024,"Pattern"],["058",1024,1536,"Pattern"],["075",1055,1491,"Indigo crane repeat"],["078",1024,1536,"Pattern"],["144",1448,1086,"Indigo motif sheet"],["053",1055,1491,"Pattern"],["083",1055,1491,"Pattern"],["066",1086,1448,"Pattern"],["142c",1043,811,"Concept A · floral-geometric modules"],["141c",1086,897,"Concept B · lattice &amp; seal modules"],["132",1055,1491,"Lacquer · on the flacon box"],["070",1024,1536,"Silk painting · on the flacon box"],["071",1055,1491,"Jade · on the flacon box"],["075",1055,1491,"Indigo · on the flacon box"],["135",1055,1491,"Seal modules · on the flacon box"],["072",1185,1327,"Ivory line · on the flacon box"],["090",1024,1536,"Pattern"],["088",1086,1448,"Ivory pattern · on the flacon box"],["072",1185,1327,"Ivory pattern · on the flacon box"],["090",1024,1536,"Ivory pattern · on the flacon box"],["076",1055,1491,"Ivory pattern · on the flacon box"],["135",1055,1491,"Ivory pattern · on the flacon box"],["119",1199,1312,"Ivory pattern · on the flacon box"],["072",1185,1327,"Pattern"],["076",1055,1491,"Pattern"],["088",1086,1448,"Pattern"],["089",1055,1491,"Pattern"],["119",1199,1312,"Pattern"],["074",1055,1491,"Pattern"],["087",1055,1491,"Pattern"],["111",1055,1491,"Pattern"],["112",1254,1254,"Pattern"],["133",1055,1491,"Pattern"],["135",1055,1491,"Modular seal repeat"],["139",1055,1491,"Pattern"],["138",1055,1491,"Pattern"],["069",1024,1536,"Pattern"],["097",1024,1536,"Pattern"],["057",1024,1536,"Pattern"],["092",1024,1536,"Pattern"],["094",1024,1536,"Pattern"],["120",1024,1536,"Pattern"],["086",1024,1536,"Pattern"],["084",1055,1491,"Pattern"],["091",1024,1536,"Pattern"],["080",1024,1536,"Pattern"],["107_hero",956,543,"Packaging set"],["105_hero",1195,667,"Packaging set"],["108_hero",814,614,"Packaging set"],["055_pack",759,391,"Packaging"],["065_bag",492,361,"Shopping bag"],["107_uni",327,446,"Staff uniform"],["107_bag",318,533,"Shopping bag"],["107_tissue",316,446,"Tissue wrap"],["107_web",470,446,"Website"],["105_uni",477,402,"Staff uniform"],["105_web",748,402,"Website"],["108_web",599,450,"Website"],["108_uni",345,614,"Staff uniform"],["103_pack",827,460,"Packaging"],["103_uni",377,288,"Staff uniform"],["103_web",681,326,"Website"],["055_store",772,391,"The boutique"],["055_gift",337,303,"Gift box"],["065_store",610,440,"The boutique"],["det_ivory_01",455,455,"Velvet spine and bottle label"],["det_ivory_02",440,440,"Gold-foil koi on velvet band"],["det_ivory_03",460,420,"Koi box with velvet sleeve"],["det_ivory_04",420,480,"Lotus box and bottle label"],["det_ivory_05",440,550,"Embossed lotus on cream paper"],["det_ivory_06",480,480,"Blind-embossed pagoda and lotus"],["det_ivory_07",480,480,"Embossed blossom sprig and lotus"],["det_ivory_09",440,432,"Crane mural in boutique"],["107",1448,1086,"Pattern"],["105",1448,1086,"Pattern"],["108",1448,1086,"Pattern"],["103",1448,1086,"Pattern"],["065",1536,1024,"Ivory moodboard"],["067",1536,1024,"Lacquer moodboard"],["146",1448,1086,"Identity sheet · marks and monogram"],["055",1536,1024,"Indigo moodboard"],["132",1055,1491,"Lacquer lotus repeat"],["132",1055,1491,"Lacquer pattern · on the flacon box"],["068",1024,1536,"Lacquer pattern · on the flacon box"],["140",1055,1491,"Lacquer pattern · on the flacon box"],["081",1055,1491,"Lacquer pattern · on the flacon box"],["070",1024,1536,"Lacquer pattern · on the flacon box"],["145",1055,1491,"Lacquer pattern · on the flacon box"],["140",1055,1491,"Pattern"],["081",1055,1491,"Pattern"],["145",1055,1491,"Pattern"],["118",1086,1448,"Pattern"],["068",1024,1536,"Pattern"],["070",1024,1536,"Silk-painting lotus"],["059_pack",1199,490,"Packaging"],["063_bag",357,392,"Shopping bag"],["062_uni",504,569,"Staff uniform"],["104_pack",1159,597,"Packaging"],["061_web",990,624,"Website"],["063_gift",516,447,"Gift box"],["106_pack",1159,614,"Packaging"],["063_uni",461,392,"Staff uniform"],["106_uni",333,465,"Staff uniform"],["106_web",464,465,"Website"],["062_gift",562,486,"Gift box"],["062_bag",544,354,"Shopping bag"],["063_candle",284,267,"Scented candle"],["059_uni",400,370,"Staff uniform"],["059_web",451,370,"Website"],["059_wrap",1199,328,"Ribbon, seal &amp; tag"],["061_uni",537,624,"Staff uniform"],["061_pack",1536,395,"Packaging"],["104_velvet",651,511,"Velvet band"],["108_velvet",551,450,"Velvet band"],["109_hero",1179,488,"Packaging set"],["109_uni",498,370,"Staff uniform"],["109_web",667,370,"Website"],["110_pack",1130,608,"Packaging"],["110_uni",402,457,"Staff uniform"],["110_tactile",306,457,"Tactile detail"],["110_web",449,457,"Website"],["103_band",585,288,"Velvet band"],["059_bag",333,370,"Shopping bag"],["062_web",534,286,"Website"],["063_web",550,358,"Website"],["det_lacquer_01",436,499,"Lotus wax seal on koi wrap"],["det_lacquer_02",450,464,"Gold-foil lotus on velvet band"],["det_lacquer_03",950,630,"Gold script among painted lotus"],["det_lacquer_04",464,440,"Painted lotus with gold stamens"],["det_lacquer_05",440,440,"Velvet bow and embossed tag"],["det_lacquer_06",420,420,"Wax-sealed lotus gift box"],["det_lacquer_07",510,430,"Crane in flight, gold accents"],["det_lacquer_08",470,440,"Watercolour lotus seed pod"],["det_lacquer_09",443,485,"Bottle and box label typography"],["det_lacquer_10",478,430,"Velvet band with foil icons"],["det_lacquer_11",490,480,"Lotus emblem linework"],["det_lacquer_12",435,430,"Gold-foil lotus shopping bag"],["det_lacquer_13",450,460,"Script wordmark with blossoms"],["059",1199,1312,"Pattern"],["061",1536,1024,"Pattern"],["062",1055,1491,"Pattern"],["063",1055,1491,"Pattern"],["104",1448,1086,"Pattern"],["106",1448,1086,"Pattern"],["109",1448,1086,"Pattern"],["110",1448,1086,"Pattern"],["071",1055,1491,"Jade lotus repeat"],["071",1055,1491,"Jade pattern · on the flacon box"],["073",1055,1491,"Jade pattern · on the flacon box"],["085",1536,1024,"Jade pattern · on the flacon box"],["054",1024,1536,"Jade pattern · on the flacon box"],["093",1024,1536,"Jade pattern · on the flacon box"],["066",1086,1448,"Jade pattern · on the flacon box"],["073",1055,1491,"Pattern"],["085",1536,1024,"Pattern"],["054",1024,1536,"Pattern"],["093",1024,1536,"Pattern"],["095_box",598,328,"Gift box"],["095_uni",437,419,"Staff uniform"],["095_web",498,419,"Website"],["003_store",835,419,"The boutique"],["003_bottle",565,390,"Flacon &amp; box"],["003_bag",461,390,"Shopping bag"],["det_jade_01",650,812,"Red-crowned crane in gold leaf"],["det_jade_02",500,430,"Gilded fan with plum blossoms"],["det_jade_03",530,430,"Gold lotus and silk ribbon"],["det_jade_04",491,389,"Ivory and jade lotus cards"],["det_jade_05",436,418,"Boutique moon-pavilion lotus mural"],["det_jade_06",480,600,"Gold koi on jade paper"],["det_jade_07",440,550,"Gilt lotus, crane and pavilion"],["det_jade_08",560,560,"Ivory lotus on jade leaves"],["det_jade_09",370,370,"Ivory bag, jade ribbon handle"],["det_jade_10",840,536,"Vietnam Nish Parfume calligraphy"],["det_jade_11",480,600,"Blush lotus on deep jade"],["det_jade_13",540,540,"Lotus and crane on ivory"],["095",1536,1024,"Jade moodboard"],["143",1448,1086,"Jade identity sheet"],["003",1536,1024,"Jade &amp; ivory moodboard"],["090",1024,1536,"Ivory · 01"],["072",1185,1327,"Ivory · 02"],["076",1055,1491,"Ivory · 03"],["088",1086,1448,"Ivory · 04"],["089",1055,1491,"Ivory · 05"],["119",1199,1312,"Ivory · 06"],["074",1055,1491,"Ivory · 07"],["087",1055,1491,"Ivory · 08"],["111",1055,1491,"Ivory · 09"],["112",1254,1254,"Ivory · 10"],["133",1055,1491,"Ivory · 11"],["135",1055,1491,"Ivory · 12"],["139",1055,1491,"Ivory · 13"],["138",1055,1491,"Ivory · 14"],["069",1024,1536,"Ivory · 15"],["097",1024,1536,"Ivory · 16"],["057",1024,1536,"Ivory · 17"],["092",1024,1536,"Ivory · 18"],["094",1024,1536,"Ivory · 19"],["120",1024,1536,"Ivory · 20"],["086",1024,1536,"Ivory · 21"],["084",1055,1491,"Ivory · 22"],["091",1024,1536,"Ivory · 23"],["080",1024,1536,"Ivory · 24"],["132",1055,1491,"Lacquer · 01"],["140",1055,1491,"Lacquer · 02"],["081",1055,1491,"Lacquer · 03"],["145",1055,1491,"Lacquer · 04"],["118",1086,1448,"Lacquer · 05"],["068",1024,1536,"Lacquer · 06"],["070",1024,1536,"Lacquer · 07"],["071",1055,1491,"Jade · 01"],["073",1055,1491,"Jade · 02"],["085",1536,1024,"Jade · 03"],["054",1024,1536,"Jade · 04"],["093",1024,1536,"Jade · 05"],["058",1024,1536,"Indigo · 01"],["075",1055,1491,"Indigo · 02"],["078",1024,1536,"Indigo · 03"],["144",1448,1086,"Indigo · 04"]];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+/* nav */
+const nav=$('#nav'),prog=$('#prog'),darkSecs=$$('[data-nav="dark"]'),navLinks=$$('.links a:not(.cp)');
+const linkTargets=navLinks.map(a=>$(a.getAttribute('href')));
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('solid',y>60);prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+  let dark=false;for(const s of darkSecs){const r=s.getBoundingClientRect();if(r.top<=40&&r.bottom>40){dark=true;break}}nav.classList.toggle('dark',dark);
+  let act=-1;linkTargets.forEach((t,i)=>{if(t&&t.getBoundingClientRect().top<innerHeight*.4)act=i});navLinks.forEach((a,i)=>a.classList.toggle('act',i===act));}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* overlay menu */
+const ov=$('#ov'),mb=$('#menuBtn'),pv=$$('.ov-pv img');
+function setOv(o){ov.classList.toggle('open',o);ov.setAttribute('aria-hidden',!o);mb.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';if(o)$('#ovClose').focus();}
+mb.onclick=()=>setOv(true);$('#ovClose').onclick=()=>{setOv(false);mb.focus()};
+$$('.ov a').forEach((a,i)=>{a.addEventListener('mouseenter',()=>pv.forEach((p,j)=>p.classList.toggle('on',j===i)));a.addEventListener('click',()=>setOv(false))});
+pv[0]&&pv[0].classList.add('on');
+
+/* concept patterns view */
+const cpv=$('#concept-patterns');
+function cpvSet(o){cpv.classList.toggle('open',o);cpv.setAttribute('aria-hidden',!o);document.body.style.overflow=o?'hidden':'';if(o){cpv.scrollTop=0;$('.cpv-close',cpv).focus()}}
+function route(){cpvSet(location.hash==='#concept-patterns')}
+addEventListener('hashchange',route);route();
+$('.cpv-close',cpv).onclick=()=>{cpvSet(false);try{history.replaceState(null,'',location.pathname+location.search)}catch(e){location.hash='library'}};
+$$('.chips button',cpv).forEach(b=>b.onclick=()=>{$$('.chips button',cpv).forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;let n=0;$$('.cpv-grid .fig',cpv).forEach(g=>{const show=f==='all'||g.dataset.w===f;g.classList.toggle('out',!show);if(show)n++});$('#cpvN').textContent=n});
+addEventListener('keydown',e=>{if(e.key!=='Escape')return;if($('#lb').classList.contains('open'))return;if(ov.classList.contains('open'))setOv(false);else if(cpv.classList.contains('open'))$('.cpv-close',cpv).click()});
+
+/* cursor */
+const cur=$('#cur');
+if(FINE&&!RM){let x=0,y=0,cx=0,cy=0;addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY;cur.classList.add('on');const t=e.target.closest?e.target:null;
+  const stage=t&&t.closest('.stage'),onFig=!!(t&&t.closest('[data-i]'))||!!stage;cur.classList.toggle('view',onFig);cur.classList.toggle('link',!onFig&&!!(t&&t.closest('a,button')));
+  $('span',cur).textContent=stage?'Drag':'View';},{passive:true});
+  document.addEventListener('pointerleave',()=>cur.classList.remove('on'));
+  (function l(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';requestAnimationFrame(l)})();}
+
+/* hero parallax */
+const hero=$('.hero');
+const layers=$$('.layer',hero).map((el,i)=>{el.querySelector('img')&&el.style.setProperty('--i',i);return{el,d:+el.dataset.d||0,base:el.classList.contains('ghost')?'translateX(-50%) ':''}});
+layers.forEach(l=>{if(l.base)l.el.style.transform=l.base});
+let mx=0,my=0,hx=0,hy=0,heroVis=true;
+if(!RM){addEventListener('pointermove',e=>{mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1},{passive:true});
+  new IntersectionObserver(es=>{heroVis=es[0].isIntersecting}).observe(hero);
+  (function loop(){if(heroVis){hx+=(mx-hx)*.06;hy+=(my-hy)*.06;const sy=Math.min(scrollY,1200);
+    for(const l of layers)l.el.style.transform=l.base+'translate3d('+(-hx*l.d*46).toFixed(2)+'px,'+(-hy*l.d*26+sy*l.d*.45).toFixed(2)+'px,0)';}
+    requestAnimationFrame(loop)})();}
+
+/* petals & leaves */
+const PAL={light:[['#B4303F','#6A1222'],['#E7A79C','#B4505A'],['#F4D3C8','#D58C8A'],['#8E1B2C','#5A0E1B']],
+  dark:[['#8E1B2C','#3B0A13'],['#B23A48','#5A0E1B'],['#E8B4A6','#9E4A50'],['#E2C48E','#8F6A3A']],
+  gold:[['#E2C48E','#8F6A3A'],['#C9A45C','#6E5226'],['#F1E7D6','#B9A07A'],['#F4D3C8','#D58C8A']]};
+const LEAF={light:['#8E8A5A','#5F6B4E'],dark:['#C9A45C','#6E5226'],gold:['#7E9A6E','#2E4A36']};
+function Petals(cv){
+  const ctx=cv.getContext('2d'),n=+cv.dataset.n||24,tone=cv.dataset.tone||'light',cols=PAL[tone]||PAL.light,lc=LEAF[tone]||LEAF.light;let W=0,H=0,ps=[],vis=false,t=0;
+  function mk(r){const z=.35+Math.random()*.65,leaf=Math.random()<.24;return{x:Math.random()*W,y:r?Math.random()*H:-30,z,leaf,s:(leaf?9:6)+Math.random()*9*z+(tone==='light'?0:2),rot:Math.random()*6.28,vr:(Math.random()-.5)*.025,f:Math.random()*6.28,vf:.012+Math.random()*.03,vy:.25+Math.random()*.55,ph:Math.random()*6.28,c:leaf?lc:cols[Math.random()*cols.length|0]}}
+  function size(){const r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);if(!ps.length)ps=Array.from({length:n},()=>mk(true));}
+  function draw(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.scale(1,Math.max(.12,Math.abs(Math.cos(p.f))));const s=p.s;
+    const g=ctx.createLinearGradient(0,-s,0,s);g.addColorStop(0,p.c[0]);g.addColorStop(1,p.c[1]);ctx.fillStyle=g;ctx.globalAlpha=.35+p.z*.6;ctx.beginPath();
+    if(p.leaf){ctx.moveTo(0,-s*1.3);ctx.quadraticCurveTo(s*.7,-s*.2,0,s*1.3);ctx.quadraticCurveTo(-s*.7,-s*.2,0,-s*1.3);}
+    else{ctx.moveTo(0,-s);ctx.bezierCurveTo(s*.95,-s*.55,s*.62,s*.75,0,s);ctx.bezierCurveTo(-s*.62,s*.75,-s*.95,-s*.55,0,-s);}
+    ctx.fill();ctx.globalAlpha*=.5;ctx.strokeStyle='rgba(255,240,220,.45)';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(0,-s*.85);ctx.quadraticCurveTo(s*.08,0,0,s*.9);ctx.stroke();ctx.restore();}
+  function frame(){if(!vis)return;t++;ctx.clearRect(0,0,W,H);
+    for(const p of ps){p.y+=p.vy*(.6+p.z);p.x+=Math.sin(t*.008+p.ph)*.6*p.z+.2;p.rot+=p.vr;p.f+=p.vf;if(p.y>H+30||p.x>W+40){Object.assign(p,mk(false));p.x=Math.random()*W*1.1-W*.1}draw(p)}
+    requestAnimationFrame(frame);}
+  size();addEventListener('resize',size);if(RM){ps.forEach(draw);return}
+  new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis){vis=true;requestAnimationFrame(frame)}else vis=v}).observe(cv);
+}
+$$('canvas.petals').forEach(Petals);
+
+/* split headings */
+$$('main h2.serif').forEach(h=>{const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}const o=document.createElement('span');o.className='w';const i=document.createElement('span');i.textContent=w;o.appendChild(i);f.appendChild(o)});c.replaceWith(f)}else if(c.nodeType===1)walk(c)})};walk(h);h.classList.add('split');$$('.w>span',h).forEach((s,k)=>s.style.setProperty('--k',k))});
+
+/* reveal */
+$$('.pillars,.m-row,.mk,.details,.worlds3').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--sd',i%6)));
+if(!RM&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('wait');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
+  $$('main .rv,main .split,main .orn,main .sigwrite').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('wait');io.observe(el)}});
+}
+
+/* tilt */
+if(FINE&&!RM){
+  $$('.pillar,.mt,.w3').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(1100px) rotateX('+(-y*8).toFixed(2)+'deg) rotateY('+(x*10).toFixed(2)+'deg)'});el.addEventListener('pointerleave',()=>el.style.transform='')});
+  $$('.details .fig,.mk .fig,.w-hero,.s-art .fig').forEach(el=>{el.classList.add('sheen');el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;el.style.transform='perspective(1000px) rotateX('+((.5-y)*8).toFixed(2)+'deg) rotateY('+((x-.5)*10).toFixed(2)+'deg) scale(1.02)';el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});el.addEventListener('pointerleave',()=>el.style.transform='')});
+}
+
+/* carousels: drag (mouse), arrows, coverflow */
+function flow(c){const cw=c.clientWidth,cen=c.scrollLeft+cw/2;for(const f of c.children){const d=(f.offsetLeft+f.offsetWidth/2-cen)/cw,a=Math.max(-1,Math.min(1,d));f.style.transform='perspective(1300px) rotateY('+(-a*26).toFixed(2)+'deg) translateZ('+(-Math.abs(a)*80).toFixed(1)+'px)';f.style.opacity=(1-Math.abs(a)*.22).toFixed(3)}}
+$$('.car').forEach(c=>{let down=false,sx=0,sl=0;c._moved=0;
+  c.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;c._moved=0;sx=e.clientX;sl=c.scrollLeft});
+  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;c._moved=Math.max(c._moved,Math.abs(dx));if(c._moved>8)c.classList.add('drag');c.scrollLeft=sl-dx});
+  addEventListener('pointerup',()=>{if(!down)return;down=false;setTimeout(()=>{c.classList.remove('drag');c._moved=0},30)});
+  const row=c.previousElementSibling,b=row?$$('.arrows button',row):[];if(b.length===2){b[0].onclick=()=>c.scrollBy({left:-c.clientWidth*.75,behavior:'smooth'});b[1].onclick=()=>c.scrollBy({left:c.clientWidth*.75,behavior:'smooth'})}
+  if(!RM){let t=false;c.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{t=false;flow(c)})}},{passive:true});flow(c);addEventListener('resize',()=>flow(c));addEventListener('load',()=>flow(c))}
+});
+
+/* 3D boxes */
+const boxes=$$('.stage').map(stage=>{const box=$('.box',stage),scroll=stage.dataset.scroll==='1',btns=stage.dataset.btns?$$('.faces button',$(stage.dataset.btns)):[];
+  const o={stage,box,ry:+stage.dataset.start||-25,rx:-14,trx:-14,drag:0,dragging:false,px:0,fx:0,fy:0,auto:0,vis:false,scroll,btns,spd:+stage.dataset.speed||.08,mouse:stage.dataset.mouse==='1'};
+  stage.addEventListener('pointerdown',e=>{o.dragging=true;o.px=e.clientX;o.fx=e.clientX;o.fy=e.clientY;o.trx=-14;try{stage.setPointerCapture(e.pointerId)}catch(_){}btns.forEach(b=>b.classList.remove('on'))});
+  stage.addEventListener('pointermove',e=>{if(!o.dragging)return;o.drag+=(e.clientX-o.px)*.5;o.px=e.clientX});
+  const up=e=>{if(!o.dragging)return;o.dragging=false;if(e.type==='pointerup'&&Math.hypot(e.clientX-o.fx,e.clientY-o.fy)<6){const el=document.elementFromPoint(e.clientX,e.clientY),f=el&&el.closest('.face');if(f&&f.dataset.i!=null)open(+f.dataset.i,stage.closest('section,header'))}};
+  stage.addEventListener('pointerup',up);stage.addEventListener('pointercancel',up);
+  const FACE=[[0,-14],[-90,-14],[-180,-14],[90,-14],[0,-88],[0,88]];
+  const sp=()=>{if(!o.scroll)return 0;const r=stage.getBoundingClientRect();return (innerHeight-r.top)/(innerHeight+r.height)*540};
+  btns.forEach((b,i)=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.toggle('on',x===b));const base=sp()+o.auto+(+stage.dataset.start||-25),cu=base+o.drag,tg=FACE[i][0],k=Math.round((cu-tg)/360);o.drag=tg+k*360-base;o.trx=FACE[i][1]}));
+  new IntersectionObserver(es=>{o.vis=es[0].isIntersecting}).observe(stage);return o});
+(function spin(){for(const o of boxes){if(!o.vis)continue;if(!RM&&!o.dragging&&o.trx===-14)o.auto+=o.spd;const t=(+o.stage.dataset.start||-25)+sp2(o)+o.auto+o.drag;o.ry+=(t-o.ry)*.08;
+  const mrx=o.mouse&&!o.dragging&&o.trx===-14?-14+hy*-10:o.trx;o.rx+=(mrx-o.rx)*.08;o.box.style.setProperty('--ry',o.ry.toFixed(2)+'deg');o.box.style.setProperty('--rx',o.rx.toFixed(2)+'deg')}requestAnimationFrame(spin)})();
+function sp2(o){if(!o.scroll)return 0;const r=o.stage.getBoundingClientRect();return (innerHeight-r.top)/(innerHeight+r.height)*540}
+
+/* scroll-driven motion */
+const proc=$('#process'),track=$('.track',proc),stepsEl=$$('.step',proc),pbar=$('.p-bar span',proc),pcount=$('#pCount'),steps=stepsEl.length;
+function sizeProc(){if(innerWidth<=860){proc.style.height='';return}proc.style.height=(innerHeight+Math.max(0,track.scrollWidth-innerWidth))+'px'}
+sizeProc();addEventListener('resize',sizeProc);addEventListener('load',sizeProc);
+const w1=$('.words .w1'),w2=$('.words .w2'),wordsEl=$('.words'),circ=$$('.w-hero'),cards=$$('.card'),fm=$$('.fmotif'),wins=$$('.w-intro');
+let ticking=false;
+function frameScroll(){ticking=false;const vh=innerHeight;
+  if(innerWidth>860){const r=proc.getBoundingClientRect(),tot=proc.offsetHeight-vh,p=Math.min(1,Math.max(0,-r.top/Math.max(1,tot))),extra=track.scrollWidth-innerWidth;
+    if(r.bottom>0&&r.top<vh){track.style.transform='translate3d('+(-p*extra).toFixed(1)+'px,0,0)';pbar.style.transform='scaleX('+p+')';if(pcount)pcount.textContent=String(Math.min(steps,1+Math.floor(p*steps*.999))).padStart(2,'0');
+    stepsEl.forEach(st=>{const b=st.getBoundingClientRect(),d=Math.max(-1,Math.min(1,(b.left+b.width/2-innerWidth/2)/innerWidth));st.style.transform='rotateY('+(-d*22).toFixed(2)+'deg) translateZ('+(-Math.abs(d)*160).toFixed(1)+'px)';st.style.opacity=(1-Math.abs(d)*.55).toFixed(3)})}}
+  const wr=wordsEl.getBoundingClientRect();if(wr.bottom>0&&wr.top<vh){const o=(vh-wr.top)*.35;w1.style.transform='translate3d('+(-o)+'px,0,0)';w2.style.transform='translate3d('+(o-700)+'px,0,0)'}
+  circ.forEach(c=>{const r=c.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;const p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.85)));c.firstElementChild.style.setProperty('--r',(14+p*58).toFixed(1)+'%')});
+  cards.forEach((c,i)=>{const nx=cards[i+1],a=c.getBoundingClientRect();if(a.bottom<-50||a.top>vh+50)return;let o=0;if(nx&&nx.parentElement===c.parentElement){const b=nx.getBoundingClientRect();o=Math.min(1,Math.max(0,(a.bottom-b.top)/a.height))}
+    const top=parseFloat(getComputedStyle(c).top)||130,e=Math.min(1,Math.max(0,(a.top-top)/(vh*.7)));c.style.transform='perspective(1600px) rotateX('+(e*16).toFixed(2)+'deg) scale('+(1-o*.06-e*.05).toFixed(4)+')';c.style.filter='brightness('+(1-o*.35).toFixed(3)+')'});
+  wins.forEach(w=>{const r=w.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;w.style.setProperty('--wx',((r.top-vh*.3)*.35).toFixed(1)+'px')});
+  fm.forEach(m=>{const r=m.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;m.style.transform='translate3d(0,'+(r.top*-(+m.dataset.speed||.2)).toFixed(1)+'px,0) rotate('+(r.top*.01).toFixed(2)+'deg)'});
+}
+if(!RM){addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(frameScroll)}},{passive:true});addEventListener('resize',frameScroll);frameScroll();}
+
+/* lightbox */
+const lb=$('#lb'),lbImg=$('#lbImg'),lbCap=$('#lbCap'),lbCount=$('#lbCount'),lbView=$('#lbView'),lbStrip=$('#lbStrip');let ci=0,last=null,L=[];
+function show(pos){ci=((pos%L.length)+L.length)%L.length;const s=SEQ[L[ci]];lb.classList.remove('zoom');lbImg.style.width='';lbImg.style.animation='none';void lbImg.offsetWidth;lbImg.style.animation='';
+  lbImg.src='img/'+s[0]+'.webp';lbImg.width=s[1];lbImg.height=s[2];lbImg.alt=s[3]||'Vietnam Nish Parfume';lbCap.textContent=s[3]||'Vietnam Nish Parfume';lbCount.textContent=String(ci+1).padStart(2,'0')+' / '+String(L.length).padStart(2,'0');
+  $$('button',lbStrip).forEach((b,k)=>b.classList.toggle('on',k===ci));const on=lbStrip.children[ci];if(on)lbStrip.scrollLeft=on.offsetLeft-lbStrip.clientWidth/2+on.offsetWidth/2;
+  [1,-1].forEach(d=>{const n=SEQ[L[(ci+d+L.length)%L.length]];if(n){const im=new Image();im.src='img/'+n[0]+'.webp'}});}
+function open(idx,scopeEl){last=document.activeElement;const scope=(scopeEl&&(scopeEl.closest('.cpv')||scopeEl.closest('section,header')))||document.body;const seen=new Set();
+  L=$$('[data-i]',scope).filter(f=>!f.classList.contains('out')).map(f=>+f.dataset.i).filter(i=>{const k=SEQ[i][0];if(seen.has(k))return false;seen.add(k);return true});
+  let p=L.indexOf(idx);if(p<0){const k=SEQ[idx][0];p=L.findIndex(i=>SEQ[i][0]===k)}if(p<0){L=[idx];p=0}
+  lbStrip.innerHTML=L.map((i,k)=>'<button type="button" aria-label="Image '+(k+1)+'"><img src="img/'+SEQ[i][0]+'.webp" alt="" loading="lazy"></button>').join('');
+  $$('button',lbStrip).forEach((b,k)=>b.onclick=()=>show(k));show(p);lb.classList.add('open');document.body.style.overflow='hidden';$('.cl',lb).focus()}
+function close(){lb.classList.remove('open');if(!cpv.classList.contains('open')&&!ov.classList.contains('open'))document.body.style.overflow='';last&&last.focus&&last.focus()}
+document.addEventListener('click',e=>{if(e.target.closest('.dl'))return;const f=e.target.closest('[data-i]');if(!f||f.closest('.stage')||f.closest('.lb'))return;const car=f.closest('.car');if(car&&car._moved>8)return;open(+f.dataset.i,f)});
+$$('[data-i]').forEach(f=>{if(f.closest('.stage'))return;f.tabIndex=0;f.setAttribute('role','button');f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(+f.dataset.i,f)}})});
+$('.cl',lb).onclick=close;$('.pv',lb).onclick=()=>show(ci-1);$('.nx',lb).onclick=()=>show(ci+1);
+lbImg.onclick=()=>{const z=!lb.classList.contains('zoom');lb.classList.toggle('zoom',z);lbImg.style.width=z?Math.round(Math.max(lbImg.naturalWidth*1.4,lbView.clientWidth))+'px':''};
+lbView.addEventListener('click',e=>{if(e.target===lbView)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(ci+1);if(e.key==='ArrowLeft')show(ci-1)});
+let tx=0,ty=0;lbView.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+lbView.addEventListener('touchend',e=>{if(lb.classList.contains('zoom')||e.touches.length)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))show(ci+(dx<0?1:-1));else if(dy>90&&Math.abs(dy)>Math.abs(dx))close()},{passive:true});
+
+/* images are for viewing only */
+document.addEventListener('contextmenu',e=>{if(e.target.closest('img,.fig,.face,[data-i],.lb'))e.preventDefault()});
+document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
+/* world sub-nav */
+const wnavs=$$('.wnav').map(n=>({links:$$('.wn-l',n),tg:$$('.wn-l',n).map(a=>$(a.getAttribute('href')))}));
+function wnavUpdate(){for(const w of wnavs){let act=-1;w.tg.forEach((t,i)=>{if(t&&t.getBoundingClientRect().top<innerHeight*.45)act=i});w.links.forEach((a,i)=>a.classList.toggle('act',i===act))}}
+addEventListener('scroll',wnavUpdate,{passive:true});wnavUpdate();
+})();
+</script>
+
+</body>
+</html>
