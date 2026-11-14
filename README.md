@@ -1,4 +1,4 @@
-# Vietnam Nish Parfume · Design Concept
+# Vietnam Niche Parfume · Design Concept
 
 Brand identity presentation by Liudmila Mamula, prepared for Lanh Nguyen.
 
